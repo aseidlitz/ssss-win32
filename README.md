@@ -1,5 +1,5 @@
-SSSS: Shamir's Secret Sharing Scheme (Windows port)
-==========
+## SSSS: Shamir's Secret Sharing Scheme (Windows port)
+
 
 **WARNING:** This is an outdated and insecure SSSS port preserved purely for historic reasons
 
@@ -17,8 +17,8 @@ The homepage for the original UNIX version of ssss by B. Poettering: http://poin
 
 Wikipedia's article about Secret Sharing: http://en.wikipedia.org/wiki/Secret_sharing
 
-Binaries
-========
+
+### Binaries
 
 Binaries (both are the same executable with two different names):
 
