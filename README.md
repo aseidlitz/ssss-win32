@@ -9,7 +9,7 @@ This is my quick and dirty port of ssss utility by B. Poettering to Windows. It 
 
 I tried to build it from the original source with both Cygwin and MINGW, but was running in all sorts of problems. One of challenges was /dev/random which dind't work as expected. I had to hack it out and replace by a different source of entropy (taken from Randomkit). It's ugly, but it works.
 
-CAUTION: RandomKit uses a MersenneTwister RNG as its kernel. This is not a cryptographically secure random number generator. But RandomKit seeds its Mersenne Twister initially with /dev/random entropy (and the seed is quite large). The overall security of this design remains arguable.
+**CAUTION:** RandomKit uses a MersenneTwister RNG as its kernel. This is not a cryptographically secure random number generator. But RandomKit seeds its Mersenne Twister initially with /dev/random entropy (and the seed is quite large). The overall security of this design remains arguable.
 
 The source needs to be updated to use Windows CryptoAPI to seed RNG, as suggested by B.Pottering, and more cryptographically sound RNG (Blum, Blum & Shub in particular).
 
@@ -22,6 +22,6 @@ Wikipedia's article about Secret Sharing: http://en.wikipedia.org/wiki/Secret_sh
 
 Binaries (both are the same executable with two different names):
 
-ssss-split.exe (59.5 KB) MD5 = 07 21 d1 f3 f7 0b 4a 8e bb be e5 19 18 3d 90 65
+ * ssss-split.exe (59.5 KB) MD5 = 07 21 d1 f3 f7 0b 4a 8e bb be e5 19 18 3d 90 65
 
-ssss-combine.exe (59.5 KB) MD5 = 07 21 d1 f3 f7 0b 4a 8e bb be e5 19 18 3d 90 65
+ * ssss-combine.exe (59.5 KB) MD5 = 07 21 d1 f3 f7 0b 4a 8e bb be e5 19 18 3d 90 65
