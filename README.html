@@ -1,0 +1,113 @@
+<!doctype html public "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>SSSS: Shamir's Secret Sharing Scheme (Win32)</title>
+<link rel="icon" href="/favicon2.ico" />
+<link rel="shortcut icon" href="/favicon2.ico" />
+
+</head>
+
+<style>
+font            {font-family: verdana,helvetica; font-size: 12px}
+td              {font-family: verdana,helvetica; font-size: 12px}
+body            {font-family: verdana,helvetica; font-size: 12px}
+p               {font-family: verdana,helvetica; font-size: 12px; margin-left: 1cm}
+ul              {font-family: verdana,helvetica; font-size: 12px; margin-left: 1cm}
+div             {font-family: verdana,helvetica; font-size: 12px}
+a:link          {background: none; color: #ffff99; font-family: verdana, helvetica; text-decoration: none}
+a:active        {background: none; color: #FFFFFF; font-family: verdana, helvetica; text-decoration: underline}
+a:visited       {background: none; color: #99FFFF; font-family: verdana, helvetica; text-decoration: none}
+a:hover         {background: none; color: #000000; font-family: verdana, helvetica; text-decoration: underline}
+.menu {
+        font-family: Verdana, Arial, Helvetica;
+        font-size: 12px;
+        font-weight: bold;
+        color: #FFFFFF;
+}
+
+.block {
+        font-family: Verdana, Arial, Helvetica;
+        font-size: 12px;
+        font-weight: bold;
+        color: #FFFFFF;
+}
+.small {font-family: verdana,helvetica; font-size: 10px;} 
+.noindent {font-family: verdana,helvetica; margin-left: 0cm;} 
+.indent {font-family: verdana,helvetica; margin-left: 2cm; margin-right: 2cm; } 
+.rnav {font-family: verdana,helvetica; font-size: 10px; text-align: right;}
+
+</style>
+
+
+<body bgcolor="#666666" text="#CCCCCC">
+
+<a name="top"></a>
+<h1>SSSS: Shamir's Secret Sharing Scheme</h1>
+<h2>WARNING: This is an outdated and insecure SSSS port preserved purely for historic reasons</h2>
+<h2>Windows port</h2>
+
+<br><br>
+<div class=small>
+<a href="#overview">Overview</a> | <a href="#download">Download</a> | <a href="#links">Links</a> 
+</div>
+
+<a name="overview"></a>
+<h3>Overview</h3>
+<p>
+
+Shamir's Secret Sharing Scheme is used to securely share certain secret information (e.g. root password or list of passwords) between a group of people in such way, so that at least two (or more) of them need to combine their shares to recreate the original secret. Its a handy way to protect sensitive passwords without giving them to anybody in particular. 
+<p>
+
+This is my quick and dirty port of <b>ssss</b> utility by B. Poettering to Windows. It doesn't depend on Cygwin DLL at runtime, but requires <a href="http://www.swox.com/gmp/">GMP</a> and <a href="http://www.jeannot.org/~js/code/index.en.html#RandomKit">RandomKit</a> to compile. <p>
+
+I tried to build it from the original source with both Cygwin and MINGW, but was running in all sorts of problems. One of challenges was <code>/dev/random</code> which dind't work as expected. I had to hack it out and replace by a different source of entropy (taken from Randomkit). Its ugly, but it works. 
+</p>
+
+<div class=indent>
+<b>CAUTION:</b> RandomKit uses a <a href="http://en.wikipedia.org/wiki/Mersenne_Twister">MersenneTwister</a> RNG as its kernel. This is not a
+  cryptographically secure RNG. But RandomKit seeds its Mersenne Twister initially with /dev/random entropy (and the seed is quite large). The overall security of this design remains arguable.
+<p class=noindent>
+The source needs to be updated to use Windows CryptoAPI to seed RNG, as suggested by B.Pottering, and more cryptographically sound RNG (<a href="http://firefly.is-a-geek.org/gmpbbs/">Blum, Blum & Shub</a> in particular). 
+</div>
+</p>
+<a href="#top" class=small>top</a><p>
+
+<a name="download"></a>
+<h3>Download</h3> 
+<p>
+
+Binaries (yep, it's actually the same executable with two different names):
+<ul>
+<li><a href="ssss-split.exe">ssss-split.exe</a> (59.5 KB) MD5 = 07 21 d1 f3 f7 0b 4a 8e bb be e5 19 18 3d 90 65
+<li><a href="ssss-combine.exe">ssss-combine.exe</a> (59.5 KB) MD5 = 07 21 d1 f3 f7 0b 4a 8e bb be e5 19 18 3d 90 65 
+</ul>
+<p>
+
+Source:
+<ul>
+<li><a href="src.zip">src.zip </a> (240 KB) - includes binaries and precompiled  GMP library  
+</ul>
+<p> 
+
+<a name="links"></a>
+<h3>Links</h3> 
+<p>
+<ul>
+<li>The homepage for the original UNIX version of ssss by B. Poettering: <a href="http://point-at-infinity.org/ssss/">http://point-at-infinity.org/ssss/</a>
+<li>Wikipedia's article about Secret Sharing: <a href="http://en.wikipedia.org/wiki/Secret_sharing">http://en.wikipedia.org/wiki/Secret_sharing</a>
+</ul>
+</p>
+<a href="#top" class=small>top</a><p>
+<center>
+<font size=-1><font face="Helvetica, tahoma, sans-serif">
+<hr width=70% size=1>
+ported by alex at seidlitz ca :: no warranties
+<p>$Id: index.html 1.2 2006/01/16 18:21:35 alex Exp alex $
+</font>
+<p align="center">
+</p>
+</body>
+</html>
+
+
+

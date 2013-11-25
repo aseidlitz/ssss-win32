@@ -1,0 +1,3900 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.52
+     from ../texi/gmp.texi on 7 November 1998 -->
+
+<TITLE>GNU MP 2.0</TITLE>
+</HEAD>
+<BODY>
+<H1>GNU MP</H1>
+<H2>The GNU Multiple Precision Arithmetic Library</H2>
+<H2>Edition 2.0</H2>
+<H2>April 1996</H2>
+<ADDRESS>by Torbj@"orn Granlund, TMG Datakonsult</ADDRESS>
+<P>
+<P><HR><P>
+<H1>Table of Contents</H1>
+<UL>
+<LI><A NAME="TOC1" HREF="gmp.html#SEC1">GNU MP Copying Conditions</A>
+<LI><A NAME="TOC2" HREF="gmp.html#SEC2">Introduction to GNU MP</A>
+<UL>
+<LI><A NAME="TOC3" HREF="gmp.html#SEC3">How to use this Manual</A>
+</UL>
+<LI><A NAME="TOC4" HREF="gmp.html#SEC4">Installing MP</A>
+<UL>
+<LI><A NAME="TOC5" HREF="gmp.html#SEC5">Known Build Problems</A>
+</UL>
+<LI><A NAME="TOC6" HREF="gmp.html#SEC6">MP Basics</A>
+<UL>
+<LI><A NAME="TOC7" HREF="gmp.html#SEC7">Nomenclature and Types</A>
+<LI><A NAME="TOC8" HREF="gmp.html#SEC8">Function Classes</A>
+<LI><A NAME="TOC9" HREF="gmp.html#SEC9">MP Variable Conventions</A>
+<LI><A NAME="TOC10" HREF="gmp.html#SEC10">Useful Macros and Constants</A>
+<LI><A NAME="TOC11" HREF="gmp.html#SEC11">Compatibility with Version 1.x</A>
+<LI><A NAME="TOC12" HREF="gmp.html#SEC12">Getting the Latest Version of MP</A>
+</UL>
+<LI><A NAME="TOC13" HREF="gmp.html#SEC13">Reporting Bugs</A>
+<LI><A NAME="TOC14" HREF="gmp.html#SEC14">Integer Functions</A>
+<UL>
+<LI><A NAME="TOC15" HREF="gmp.html#SEC15">Initialization and Assignment Functions</A>
+<UL>
+<LI><A NAME="TOC16" HREF="gmp.html#SEC16">Assignment Functions</A>
+<LI><A NAME="TOC17" HREF="gmp.html#SEC17">Combined Initialization and Assignment Functions</A>
+</UL>
+<LI><A NAME="TOC18" HREF="gmp.html#SEC18">Conversion Functions</A>
+<LI><A NAME="TOC19" HREF="gmp.html#SEC19">Arithmetic Functions</A>
+<LI><A NAME="TOC20" HREF="gmp.html#SEC20">Comparison Functions</A>
+<LI><A NAME="TOC21" HREF="gmp.html#SEC21">Logical and Bit Manipulation Functions</A>
+<LI><A NAME="TOC22" HREF="gmp.html#SEC22">Input and Output Functions</A>
+<LI><A NAME="TOC23" HREF="gmp.html#SEC23">Miscellaneous Functions</A>
+</UL>
+<LI><A NAME="TOC24" HREF="gmp.html#SEC24">Rational Number Functions</A>
+<UL>
+<LI><A NAME="TOC25" HREF="gmp.html#SEC25">Initialization and Assignment Functions</A>
+<LI><A NAME="TOC26" HREF="gmp.html#SEC26">Arithmetic Functions</A>
+<LI><A NAME="TOC27" HREF="gmp.html#SEC27">Comparison Functions</A>
+<LI><A NAME="TOC28" HREF="gmp.html#SEC28">Applying Integer Functions to Rationals</A>
+<LI><A NAME="TOC29" HREF="gmp.html#SEC29">Miscellaneous Functions</A>
+</UL>
+<LI><A NAME="TOC30" HREF="gmp.html#SEC30">Floating-point Functions</A>
+<UL>
+<LI><A NAME="TOC31" HREF="gmp.html#SEC31">Initialization and Assignment Functions</A>
+<UL>
+<LI><A NAME="TOC32" HREF="gmp.html#SEC32">Assignment Functions</A>
+<LI><A NAME="TOC33" HREF="gmp.html#SEC33">Combined Initialization and Assignment Functions</A>
+</UL>
+<LI><A NAME="TOC34" HREF="gmp.html#SEC34">Conversion Functions</A>
+<LI><A NAME="TOC35" HREF="gmp.html#SEC35">Arithmetic Functions</A>
+<LI><A NAME="TOC36" HREF="gmp.html#SEC36">Comparison Functions</A>
+<LI><A NAME="TOC37" HREF="gmp.html#SEC37">Input and Output Functions</A>
+<LI><A NAME="TOC38" HREF="gmp.html#SEC38">Miscellaneous Functions</A>
+</UL>
+<LI><A NAME="TOC39" HREF="gmp.html#SEC39">Low-level Functions</A>
+<LI><A NAME="TOC40" HREF="gmp.html#SEC40">Berkeley MP Compatible Functions</A>
+<LI><A NAME="TOC41" HREF="gmp.html#SEC41">Custom Allocation</A>
+<LI><A NAME="TOC42" HREF="gmp.html#SEC42">Contributors</A>
+<LI><A NAME="TOC43" HREF="gmp.html#SEC43">References</A>
+<LI><A NAME="TOC44" HREF="gmp.html#SEC44">Concept Index</A>
+<LI><A NAME="TOC45" HREF="gmp.html#SEC45">Function and Type Index</A>
+</UL>
+<P><HR><P>
+
+<P>
+Copyright (C) 1991, 1993, 1994, 1995, 1996 Free Software Foundation, Inc.
+
+</P>
+<P>
+
+<P>
+Published by the Free Software Foundation <BR>
+59 Temple Place - Suite 330 <BR>
+Boston, MA 02111-1307, USA <BR>
+
+</P>
+<P>
+Permission is granted to make and distribute verbatim copies of
+this manual provided the copyright notice and this permission notice
+are preserved on all copies.
+
+</P>
+<P>
+Permission is granted to copy and distribute modified versions of this
+manual under the conditions for verbatim copying, provided that the entire
+resulting derived work is distributed under the terms of a permission
+notice identical to this one.
+
+</P>
+<P>
+Permission is granted to copy and distribute translations of this manual
+into another language, under the above conditions for modified versions,
+except that this permission notice may be stated in a translation approved
+by the Foundation.
+
+</P>
+
+
+
+<H1><A NAME="SEC1" HREF="gmp.html#TOC1">GNU MP Copying Conditions</A></H1>
+<P>
+<A NAME="IDX1"></A>
+<A NAME="IDX2"></A>
+
+</P>
+<P>
+This library is <EM>free</EM>; this means that everyone is free to use it and
+free to redistribute it on a free basis.  The library is not in the public
+domain; it is copyrighted and there are restrictions on its distribution, but
+these restrictions are designed to permit everything that a good cooperating
+citizen would want to do.  What is not allowed is to try to prevent others
+from further sharing any version of this library that they might get from
+you.
+</P>
+<P>
+Specifically, we want to make sure that you have the right to give away copies
+of the library, that you receive source code or else can get it if you want
+it, that you can change this library or use pieces of it in new free programs,
+and that you know you can do these things.
+</P>
+<P>
+To make sure that everyone has such rights, we have to forbid you to deprive
+anyone else of these rights.  For example, if you distribute copies of the GNU
+MP library, you must give the recipients all the rights that you have.  You
+must make sure that they, too, receive or can get the source code.  And you
+must tell them their rights.
+</P>
+<P>
+Also, for our own protection, we must make certain that everyone finds out
+that there is no warranty for the GNU MP library.  If it is modified by
+someone else and passed on, we want their recipients to know that what they
+have is not what we distributed, so that any problems introduced by others
+will not reflect on our reputation.
+</P>
+<P>
+The precise conditions of the license for the GNU MP library are found in the
+Library General Public License that accompany the source code.
+</P>
+
+
+<H1><A NAME="SEC2" HREF="gmp.html#TOC2">Introduction to GNU MP</A></H1>
+
+<P>
+GNU MP is a portable library written in C for arbitrary precision arithmetic
+on integers, rational numbers, and floating-point numbers.  It aims to provide
+the fastest possible arithmetic for all applications that need higher
+precision than is directly supported by the basic C types.
+
+</P>
+<P>
+Many applications use just a few hundred bits of precision; but some
+applications may need thousands or even millions of bits.  MP is designed to
+give good performance for both, by choosing algorithms based on the sizes of
+the operands, and by carefully keeping the overhead at a minimum.
+
+</P>
+<P>
+The speed of MP is achieved by using fullwords as the basic arithmetic type,
+by using sophisticated algorithms, by including carefully optimized assembly
+code for the most common inner loops for many different CPUs, and by a general
+emphasis on speed (as opposed to simplicity or elegance).
+
+</P>
+<P>
+There is carefully optimized assembly code for these CPUs: DEC Alpha, Amd
+29000, HPPA 1.0 and 1.1, Intel Pentium and generic x86, Intel i960, Motorola
+MC68000, MC68020, MC88100, and MC88110, Motorola/IBM PowerPC, National
+NS32000, IBM POWER, MIPS R3000, R4000, SPARCv7, SuperSPARC, generic SPARCv8,
+and DEC VAX.  Some optimizations also for ARM, Clipper, IBM ROMP (RT), and
+Pyramid AP/XP.
+
+</P>
+<P>
+This version of MP is released under a more liberal license than previous
+versions.  It is now permitted to link MP to non-free programs, as long as MP
+source code is provided when distributing the non-free program.
+
+</P>
+
+
+
+<H2><A NAME="SEC3" HREF="gmp.html#TOC3">How to use this Manual</A></H2>
+
+<P>
+Everyone should read section <A HREF="gmp.html#SEC6">MP Basics</A>.  If you need to install the library
+yourself, you need to read section <A HREF="gmp.html#SEC4">Installing MP</A>, too.
+
+</P>
+<P>
+The rest of the manual can be used for later reference, although it is
+probably a good idea too glance through it.
+
+</P>
+
+
+
+<H1><A NAME="SEC4" HREF="gmp.html#TOC4">Installing MP</A></H1>
+<P>
+<A NAME="IDX3"></A>
+
+</P>
+<P>
+To build MP, you first have to configure it for your CPU and operating system.
+You need a C compiler, preferably GCC, but any reasonable compiler should
+work.  And you need a standard Unix <SAMP>`make'</SAMP> program, plus some other
+standard Unix utility programs.
+
+</P>
+<P>
+(If you're on a MS-DOS machine, your can build MP using <TT>`make.bat'</TT>.  It
+requires that djgpp is installed.  It does not require configuration, nor is
+<SAMP>`make'</SAMP> needed; <TT>`make.bat'</TT> both configures and builds the library.)
+
+</P>
+<P>
+Here are the steps needed to install the library on Unix systems:
+
+</P>
+
+<OL>
+<LI>
+
+In most cases, <SAMP>`./configure --target=cpu-vendor-os'</SAMP>, should work both for
+native and cross-compilation.  If you get error messages, your machine might
+not be supported.
+
+If you want to compile in a separate object directory, cd to that directory,
+and prefix the configure command with the path to the MP source directory.
+Not all <SAMP>`make'</SAMP> programs have the necessary features to support this.  In
+particular, SunOS and Slowaris <SAMP>`make'</SAMP> have bugs that makes them unable to
+build from a separate object directory.  Use GNU <SAMP>`make'</SAMP> instead.
+
+In addition to the standard cpu-vendor-os tuples, MP recognizes sparc8 and
+supersparc as valid CPU names.  Specifying these CPU names for relevant
+systems will improve performance significantly.
+
+In general, if you want a library that runs as fast as possible, you should
+make sure you configure MP for the exact CPU type your system uses.
+
+If you have <CODE>gcc</CODE> in your <CODE>PATH</CODE>, it will be used by default.  To
+override this, pass <SAMP>`-with-gcc=no'</SAMP> to <TT>`configure'</TT>.
+
+<LI>
+
+<SAMP>`make'</SAMP>
+
+This will compile MP, and create a library archive file <TT>`libgmp.a'</TT> in the
+working directory.
+
+<LI>
+
+<SAMP>`make check'</SAMP>
+
+This will make sure MP was built correctly.  If you get error messages, please
+report this to <SAMP>`bug-gmp@prep.ai.mit.edu'</SAMP>.  (See section <A HREF="gmp.html#SEC13">Reporting Bugs</A>, for
+information on what to include in useful bug reports.)
+
+<LI>
+
+<SAMP>`make install'</SAMP>
+
+This will copy the file <TT>`gmp.h'</TT> and <TT>`libgmp.a'</TT>, as well as the info
+files, to <TT>`/usr/local'</TT> (or if you passed the <SAMP>`--prefix'</SAMP> option to
+<TT>`configure'</TT>, to the directory given as argument to <SAMP>`--prefix'</SAMP>).
+</OL>
+
+<P>
+If you wish to build and install the BSD MP compatible functions, use
+<SAMP>`make libmp.a'</SAMP> and <SAMP>`make install-bsdmp'</SAMP>.
+
+</P>
+<P>
+There are some other useful make targets:
+
+</P>
+
+<UL>
+<LI>
+
+<SAMP>`doc'</SAMP>
+
+Create a DVI version of the manual, in <TT>`gmp.dvi'</TT> and a set of info files,
+in <TT>`gmp.info'</TT>, <TT>`gmp.info-1'</TT>, <TT>`gmp.info-2'</TT>, etc.
+
+<LI>
+
+<SAMP>`ps'</SAMP>
+
+Create a Postscript version of the manual, in <TT>`gmp.ps'</TT>.
+
+<LI>
+
+<SAMP>`html'</SAMP>
+
+Create a HTML version of the manual, in <TT>`gmp.html'</TT>.
+
+<LI>
+
+<SAMP>`clean'</SAMP>
+
+Delete all object files and archive files, but not the configuration files.
+
+<LI>
+
+<SAMP>`distclean'</SAMP>
+
+Delete all files not included in the distribution.
+
+<LI>
+
+<SAMP>`uninstall'</SAMP>
+
+Delete all files copied by <SAMP>`make install'</SAMP>.
+</UL>
+
+
+
+<H2><A NAME="SEC5" HREF="gmp.html#TOC5">Known Build Problems</A></H2>
+
+<P>
+GCC 2.7.2 (as well as 2.6.3) for the RS/6000 and PowerPC can not be used to
+compile MP, due to a bug in GCC.  If you want to use GCC for these machines,
+you need to apply the patch below to GCC, or use a later version of the
+compiler.
+
+</P>
+<P>
+If you are on a Sequent Symmetry, use the GNU assembler instead of the
+system's assembler, since the latter has serious bugs.
+
+</P>
+<P>
+The system compiler on NeXT is a massacred and old gcc, even if the compiler
+calls itself <TT>`cc'</TT>.  This compiler cannot be used to build MP.  You need
+to get a real gcc, and install that before you compile MP.  (NeXT might have
+fixed this in newer releases of their system.)
+
+</P>
+<P>
+Please report other problems to <SAMP>`bug-gmp@prep.ai.mit.edu'</SAMP>.
+See section <A HREF="gmp.html#SEC13">Reporting Bugs</A>.
+
+</P>
+
+<P>
+Patch to apply to GCC 2.6.3 and 2.7.2:
+
+</P>
+
+<PRE>
+*** config/rs6000/rs6000.md	Sun Feb 11 08:22:11 1996
+--- config/rs6000/rs6000.md.new	Sun Feb 18 03:33:37 1996
+***************
+*** 920,926 ****
+     (set (match_operand:SI 0 "gpc_reg_operand" "=r")
+  	(not:SI (match_dup 1)))]
+    ""
+!   "nor. %0,%2,%1"
+    [(set_attr "type" "compare")])
+  
+  (define_insn ""
+--- 920,926 ----
+     (set (match_operand:SI 0 "gpc_reg_operand" "=r")
+  	(not:SI (match_dup 1)))]
+    ""
+!   "nor. %0,%1,%1"
+    [(set_attr "type" "compare")])
+  
+  (define_insn ""
+</PRE>
+
+
+
+<H1><A NAME="SEC6" HREF="gmp.html#TOC6">MP Basics</A></H1>
+
+<P>
+<A NAME="IDX4"></A>
+All declarations needed to use MP are collected in the include file
+<TT>`gmp.h'</TT>.  It is designed to work with both C and C++ compilers.
+
+</P>
+
+
+
+<H2><A NAME="SEC7" HREF="gmp.html#TOC7">Nomenclature and Types</A></H2>
+
+<P>
+<A NAME="IDX5"></A>
+<A NAME="IDX6"></A>
+In this manual, <EM>integer</EM> usually means a multiple precision integer, as
+defined by the MP library.  The C data type for such integers is <CODE>mpz_t</CODE>.
+Here are some examples of how to declare such integers:
+
+</P>
+
+<PRE>
+mpz_t sum;
+
+struct foo { mpz_t x, y; };
+
+mpz_t vec[20];
+</PRE>
+
+<P>
+<A NAME="IDX7"></A>
+<A NAME="IDX8"></A>
+<EM>Rational number</EM> means a multiple precision fraction.  The C data type
+for these fractions is <CODE>mpq_t</CODE>.  For example:
+
+</P>
+
+<PRE>
+mpq_t quotient;
+</PRE>
+
+<P>
+<A NAME="IDX9"></A>
+<A NAME="IDX10"></A>
+<EM>Floating point number</EM> or <EM>Float</EM> for short, is an arbitrary precision
+mantissa with an limited precision exponent.  The C data type for such objects
+is <CODE>mpf_t</CODE>.
+
+</P>
+<P>
+<A NAME="IDX11"></A>
+<A NAME="IDX12"></A>
+A <EM>limb</EM> means the part of a multi-precision number that fits in a single
+word.  (We chose this word because a limb of the human body is analogous to a
+digit, only larger, and containing several digits.)  Normally a limb contains
+32 or 64 bits.  The C data type for a limb is <CODE>mp_limb_t</CODE>.
+
+</P>
+
+
+
+<H2><A NAME="SEC8" HREF="gmp.html#TOC8">Function Classes</A></H2>
+
+<P>
+There are six classes of functions in the MP library:
+
+</P>
+
+<OL>
+<LI>
+
+Functions for signed integer arithmetic, with names beginning with
+<CODE>mpz_</CODE>.  The associated type is <CODE>mpz_t</CODE>.  There are about 100
+functions in this class.
+
+<LI>
+
+Functions for rational number arithmetic, with names beginning with
+<CODE>mpq_</CODE>.  The associated type is <CODE>mpq_t</CODE>.  There are about 20
+functions in this class, but the functions in the previous class can be used
+for performing arithmetic on the numerator and denominator separately.
+
+<LI>
+
+Functions for floating-point arithmetic, with names beginning with
+<CODE>mpf_</CODE>.  The associated type is <CODE>mpf_t</CODE>.  There are about 50
+functions is this class.
+
+<LI>
+
+Functions compatible with Berkeley MP, such as <CODE>itom</CODE>, <CODE>madd</CODE>, and
+<CODE>mult</CODE>.  The associated type is <CODE>MINT</CODE>.
+
+<LI>
+
+Fast low-level functions that operate on natural numbers.  These are used by
+the functions in the preceding groups, and you can also call them directly
+from very time-critical user programs.  These functions' names begin with
+<CODE>mpn_</CODE>.  There are about 30 (hard-to-use) functions in this class.
+
+The associated type is array of <CODE>mp_limb_t</CODE>.
+
+<LI>
+
+Miscellaneous functions.  Functions for setting up custom allocation.
+</OL>
+
+
+
+<H2><A NAME="SEC9" HREF="gmp.html#TOC9">MP Variable Conventions</A></H2>
+
+<P>
+As a general rule, all MP functions expect output arguments before input
+arguments.  This notation is based on an analogy with the assignment operator.
+(The BSD MP compatibility functions disobey this rule, having the output
+argument(s) last.)
+
+</P>
+<P>
+MP allows you to use the same variable for both input and output in the same
+expression.  For example, the main function for integer multiplication,
+<CODE>mpz_mul</CODE>, can be used like this: <CODE>mpz_mul (x, x, x);</CODE>.  This
+computes the square of <VAR>x</VAR> and put the result back in <VAR>x</VAR>.
+
+</P>
+<P>
+Before you can assign to an MP variable, you need to initialize it by calling
+one of the special initialization functions.  When you're done with a
+variable, you need to clear it out, using one of the functions for that
+purpose.  Which function to use depends on the type of variable.  See the
+chapters on integer functions, rational number functions, and floating-point
+functions for details.
+
+</P>
+<P>
+A variable should only be initialized once, or at least cleared out between
+each initialization.  After a variable has been initialized, it may be
+assigned to any number of times.
+
+</P>
+<P>
+For efficiency reasons, avoid to initialize and clear out a variable in loops.
+Instead, initialize it before entering the loop, and clear it out after the
+loop has exited.
+
+</P>
+<P>
+You don't need to be concerned about allocating additional space for MP
+variables.  All functions in MP automatically allocate additional space when a
+variable does not already have enough space.  They do not, however, reduce the
+space when a smaller number is stored in the object.  Most of the time, this
+policy is best, since it avoids frequent re-allocation.
+
+</P>
+
+
+
+<H2><A NAME="SEC10" HREF="gmp.html#TOC10">Useful Macros and Constants</A></H2>
+
+<P>
+<DL>
+<DT><U>Global Constant:</U> const int <B>mp_bits_per_limb</B>
+<DD><A NAME="IDX13"></A>
+The number of bits per limb.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Macro:</U> <B>__GNU_MP_VERSION</B>
+<DD><A NAME="IDX14"></A>
+<DT><U>Macro:</U> <B>__GNU_MP_VERSION_MINOR</B>
+<DD><A NAME="IDX15"></A>
+The major and minor MP version, respectively, as integers.
+</DL>
+
+</P>
+
+
+<H2><A NAME="SEC11" HREF="gmp.html#TOC11">Compatibility with Version 1.x</A></H2>
+
+<P>
+This version of MP is upward compatible with previous versions of MP, with a
+few exceptions.
+
+</P>
+
+<OL>
+<LI>Integer division functions round the result differently.  The old
+
+functions (<CODE>mpz_div</CODE>, <CODE>mpz_divmod</CODE>, <CODE>mpz_mdiv</CODE>,
+<CODE>mpz_mdivmod</CODE>, etc) now all use floor rounding (i.e., they round the
+quotient to -infinity).  There are a lot of new functions for integer
+division, giving the user better control over the rounding.
+
+<LI>The function <CODE>mpz_mod</CODE> now compute the true <STRONG>mod</STRONG> function.
+
+<LI>The functions <CODE>mpz_powm</CODE> and <CODE>mpz_powm_ui</CODE> now use
+
+<STRONG>mod</STRONG> for reduction.
+
+<LI>The assignment functions for rational numbers do no longer canonicalize
+
+their results.  In the case a non-canonical result could arise from an
+assignment, the user need to insert an explicit call to
+<CODE>mpq_canonicalize</CODE>.  This change was made for efficiency.
+
+<LI>Output generated by <CODE>mpz_out_raw</CODE> in this release cannot be read
+
+by <CODE>mpz_inp_raw</CODE> in previous releases.  This change was made for making
+the file format truly portable between machines with different word sizes.
+
+<LI>Several <CODE>mpn</CODE> functions have changed.  But they were intentionally
+
+undocumented in previous releases.
+
+</OL>
+
+
+
+<H2><A NAME="SEC12" HREF="gmp.html#TOC12">Getting the Latest Version of MP</A></H2>
+
+<P>
+The latest version of the MP library is available by anonymous ftp from from
+<SAMP>`prep.ai.mit.edu'</SAMP>.  The file name is <TT>`/pub/gnu/gmp-M.N.tar.gz'</TT>.
+Many sites around the world mirror <SAMP>`prep'</SAMP>; please use a mirror site near
+you.
+
+</P>
+
+
+<H1><A NAME="SEC13" HREF="gmp.html#TOC13">Reporting Bugs</A></H1>
+<P>
+<A NAME="IDX16"></A>
+
+</P>
+<P>
+If you think you have found a bug in the MP library, please investigate it and
+report it.  We have made this library available to you, and it is not to ask
+too much from you, to ask you to report the bugs that you find.
+
+</P>
+<P>
+There are a few things you should think about when you put your bug report
+together.
+
+</P>
+<P>
+You have to send us a test case that makes it possible for us to reproduce the
+bug.  Include instructions on how to run the test case.
+
+</P>
+<P>
+You also have to explain what is wrong; if you get a crash, or if the results
+printed are incorrect and in that case, in what way.
+
+</P>
+<P>
+It is not uncommon that an observed problem is actually due to a bug in the
+compiler used when building MP; the MP code tends to explore interesting
+corners in compilers.  Therefore, please include compiler version information
+in your bug report.  This can be extracted using <SAMP>`what `which cc`'</SAMP>, or,
+if you're using gcc, <SAMP>`gcc -v'</SAMP>.  Also, include the output from <SAMP>`uname
+-a'</SAMP>.
+
+</P>
+<P>
+If your bug report is good, we will do our best to help you to get a corrected
+version of the library; if the bug report is poor, we won't do anything about
+it (aside of chiding you to send better bug reports).
+
+</P>
+<P>
+Send your bug report to: <SAMP>`bug-gmp@prep.ai.mit.edu'</SAMP>.
+
+</P>
+<P>
+If you think something in this manual is unclear, or downright incorrect, or if
+the language needs to be improved, please send a note to the same address.
+
+</P>
+
+
+
+<H1><A NAME="SEC14" HREF="gmp.html#TOC14">Integer Functions</A></H1>
+<P>
+<A NAME="IDX17"></A>
+
+</P>
+<P>
+This chapter describes the MP functions for performing integer arithmetic.
+These functions start with the prefix <CODE>mpz_</CODE>.
+
+</P>
+<P>
+Arbitrary precision integers are stored in objects of type <CODE>mpz_t</CODE>.
+
+</P>
+
+
+
+<H2><A NAME="SEC15" HREF="gmp.html#TOC15">Initialization and Assignment Functions</A></H2>
+
+<P>
+The functions for integer arithmetic assume that all integer objects are
+initialized.  You do that by calling the function <CODE>mpz_init</CODE>.
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_init</B> <I>(mpz_t <VAR>integer</VAR>)</I>
+<DD><A NAME="IDX18"></A>
+Initialize <VAR>integer</VAR> with limb space and set the initial numeric value to
+0.  Each variable should normally only be initialized once, or at least cleared
+out (using <CODE>mpz_clear</CODE>) between each initialization.
+</DL>
+
+</P>
+<P>
+Here is an example of using <CODE>mpz_init</CODE>:
+
+</P>
+
+<PRE>
+{
+  mpz_t integ;
+  mpz_init (integ);
+  ...
+  mpz_add (integ, ...);
+  ...
+  mpz_sub (integ, ...);
+
+  /* Unless the program is about to exit, do ... */
+  mpz_clear (integ);
+}
+</PRE>
+
+<P>
+As you can see, you can store new values any number of times, once an
+object is initialized.
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_clear</B> <I>(mpz_t <VAR>integer</VAR>)</I>
+<DD><A NAME="IDX19"></A>
+Free the limb space occupied by <VAR>integer</VAR>.  Make sure to call this
+function for all <CODE>mpz_t</CODE> variables when you are done with them.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void * <B>_mpz_realloc</B> <I>(mpz_t <VAR>integer</VAR>, mp_size_t <VAR>new_alloc</VAR>)</I>
+<DD><A NAME="IDX20"></A>
+Change the limb space allocation to <VAR>new_alloc</VAR> limbs.  This function is
+not normally called from user code, but it can be used to give memory back to
+the heap, or to increase the space of a variable to avoid repeated automatic
+re-allocation.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_array_init</B> <I>(mpz_t <VAR>integer_array</VAR>[], size_t <VAR>array_size</VAR>, mp_size_t <VAR>fixed_num_bits</VAR>)</I>
+<DD><A NAME="IDX21"></A>
+Allocate <STRONG>fixed</STRONG> limb space for all <VAR>array_size</VAR> integers in
+<VAR>integer_array</VAR>.  The fixed allocation for each integer in the array is
+enough to store <VAR>fixed_num_bits</VAR>.  If the fixed space will be insufficient
+for storing the result of a subsequent calculation, the result is
+unpredictable.
+
+</P>
+<P>
+This function is useful for decreasing the working set for some algorithms
+that use large integer arrays.
+
+</P>
+<P>
+There is no way to de-allocate the storage allocated by this function.
+Don't call <CODE>mpz_clear</CODE>!
+</DL>
+
+</P>
+
+
+
+<H3><A NAME="SEC16" HREF="gmp.html#TOC16">Assignment Functions</A></H3>
+<P>
+<A NAME="IDX22"></A>
+
+</P>
+<P>
+These functions assign new values to already initialized integers
+(see section <A HREF="gmp.html#SEC15">Initialization and Assignment Functions</A>).
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_set</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op</VAR>)</I>
+<DD><A NAME="IDX23"></A>
+<DT><U>Function:</U> void <B>mpz_set_ui</B> <I>(mpz_t <VAR>rop</VAR>, unsigned long int <VAR>op</VAR>)</I>
+<DD><A NAME="IDX24"></A>
+<DT><U>Function:</U> void <B>mpz_set_si</B> <I>(mpz_t <VAR>rop</VAR>, signed long int <VAR>op</VAR>)</I>
+<DD><A NAME="IDX25"></A>
+<DT><U>Function:</U> void <B>mpz_set_d</B> <I>(mpz_t <VAR>rop</VAR>, double <VAR>op</VAR>)</I>
+<DD><A NAME="IDX26"></A>
+Set the value of <VAR>rop</VAR> from <VAR>op</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> int <B>mpz_set_str</B> <I>(mpz_t <VAR>rop</VAR>, char *<VAR>str</VAR>, int <VAR>base</VAR>)</I>
+<DD><A NAME="IDX27"></A>
+Set the value of <VAR>rop</VAR> from <VAR>str</VAR>, a '\0'-terminated C string in base
+<VAR>base</VAR>.  White space is allowed in the string, and is simply ignored.  The
+base may vary from 2 to 36.  If <VAR>base</VAR> is 0, the actual base is determined
+from the leading characters: if the first two characters are `0x' or `0X',
+hexadecimal is assumed, otherwise if the first character is `0', octal is
+assumed, otherwise decimal is assumed.
+
+</P>
+<P>
+This function returns 0 if the entire string up to the '\0' is a valid
+number in base <VAR>base</VAR>.  Otherwise it returns -1.
+</DL>
+
+</P>
+
+
+
+<H3><A NAME="SEC17" HREF="gmp.html#TOC17">Combined Initialization and Assignment Functions</A></H3>
+<P>
+<A NAME="IDX28"></A>
+
+</P>
+<P>
+For convenience, MP provides a parallel series of initialize-and-set functions
+which initialize the output and then store the value there.  These functions'
+names have the form <CODE>mpz_init_set...</CODE>
+
+</P>
+<P>
+Here is an example of using one:
+
+</P>
+
+<PRE>
+{
+  mpz_t pie;
+  mpz_init_set_str (pie, "3141592653589793238462643383279502884", 10);
+  ...
+  mpz_sub (pie, ...);
+  ...
+  mpz_clear (pie);
+}
+</PRE>
+
+<P>
+Once the integer has been initialized by any of the <CODE>mpz_init_set...</CODE>
+functions, it can be used as the source or destination operand for the ordinary
+integer functions.  Don't use an initialize-and-set function on a variable
+already initialized!
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_init_set</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op</VAR>)</I>
+<DD><A NAME="IDX29"></A>
+<DT><U>Function:</U> void <B>mpz_init_set_ui</B> <I>(mpz_t <VAR>rop</VAR>, unsigned long int <VAR>op</VAR>)</I>
+<DD><A NAME="IDX30"></A>
+<DT><U>Function:</U> void <B>mpz_init_set_si</B> <I>(mpz_t <VAR>rop</VAR>, signed long int <VAR>op</VAR>)</I>
+<DD><A NAME="IDX31"></A>
+<DT><U>Function:</U> void <B>mpz_init_set_d</B> <I>(mpz_t <VAR>rop</VAR>, double <VAR>op</VAR>)</I>
+<DD><A NAME="IDX32"></A>
+Initialize <VAR>rop</VAR> with limb space and set the initial numeric value from
+<VAR>op</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> int <B>mpz_init_set_str</B> <I>(mpz_t <VAR>rop</VAR>, char *<VAR>str</VAR>, int <VAR>base</VAR>)</I>
+<DD><A NAME="IDX33"></A>
+Initialize <VAR>rop</VAR> and set its value from <VAR>str</VAR>, a '\0'-terminated C
+string in base <VAR>base</VAR>.  White space is allowed in the string, and is simply
+ignored.  The base may vary from 2 to 36.  If <VAR>base</VAR> is 0, the actual base
+is determined from the leading characters: if the first two characters are `0x'
+or `0X', hexadecimal is assumed, otherwise if the first character is `0', octal
+is assumed, otherwise decimal is assumed.
+
+</P>
+<P>
+If the string is a correct base <VAR>base</VAR> number, the function returns 0;
+if an error occurs it returns -1.  <VAR>rop</VAR> is initialized even if
+an error occurs.  (I.e., you have to call <CODE>mpz_clear</CODE> for it.)
+</DL>
+
+</P>
+
+
+
+<H2><A NAME="SEC18" HREF="gmp.html#TOC18">Conversion Functions</A></H2>
+<P>
+<A NAME="IDX34"></A>
+<A NAME="IDX35"></A>
+
+</P>
+<P>
+This section describes functions for converting arbitrary precision integers
+to standard C types.  Functions for converting <STRONG>to</STRONG> arbitrary
+precision integers are described in section <A HREF="gmp.html#SEC16">Assignment Functions</A> and section <A HREF="gmp.html#SEC22">Input and Output Functions</A>.
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> unsigned long int <B>mpz_get_ui</B> <I>(mpz_t <VAR>op</VAR>)</I>
+<DD><A NAME="IDX36"></A>
+Return the least significant part from <VAR>op</VAR>.  This function combined
+with <BR> <CODE>mpz_tdiv_q_2exp(..., <VAR>op</VAR>, CHAR_BIT*sizeof(unsigned
+long int))</CODE> can be used to extract the limbs of an integer efficiently.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> signed long int <B>mpz_get_si</B> <I>(mpz_t <VAR>op</VAR>)</I>
+<DD><A NAME="IDX37"></A>
+If <VAR>op</VAR> fits into a <CODE>signed long int</CODE> return the value of <VAR>op</VAR>.
+Otherwise return the least significant part of <VAR>op</VAR>, with the same sign
+as <VAR>op</VAR>.
+
+</P>
+<P>
+If <VAR>op</VAR> is too large to fit in a <CODE>signed long int</CODE>, the returned
+result is probably not very useful.  
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> char * <B>mpz_get_str</B> <I>(char *<VAR>str</VAR>, int <VAR>base</VAR>, mpz_t <VAR>op</VAR>)</I>
+<DD><A NAME="IDX38"></A>
+Convert <VAR>op</VAR> to a string of digits in base <VAR>base</VAR>.  The base may vary
+from 2 to 36.
+
+</P>
+<P>
+If <VAR>str</VAR> is NULL, space for the result string is allocated using the
+default allocation function, and a pointer to the string is returned.
+
+</P>
+<P>
+If <VAR>str</VAR> is not NULL, it should point to a block of storage enough large
+for the result.  To find out the right amount of space to provide for
+<VAR>str</VAR>, use <CODE>mpz_sizeinbase (<VAR>op</VAR>, <VAR>base</VAR>) + 2</CODE>.  The two
+extra bytes are for a possible minus sign, and for the terminating null
+character.
+</DL>
+
+</P>
+
+
+
+<H2><A NAME="SEC19" HREF="gmp.html#TOC19">Arithmetic Functions</A></H2>
+<P>
+<A NAME="IDX39"></A>
+<A NAME="IDX40"></A>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_add</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op1</VAR>, mpz_t <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX41"></A>
+<DT><U>Function:</U> void <B>mpz_add_ui</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op1</VAR>, unsigned long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX42"></A>
+Set <VAR>rop</VAR> to <VAR>op1</VAR> + <VAR>op2</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_sub</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op1</VAR>, mpz_t <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX43"></A>
+<DT><U>Function:</U> void <B>mpz_sub_ui</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op1</VAR>, unsigned long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX44"></A>
+Set <VAR>rop</VAR> to <VAR>op1</VAR> - <VAR>op2</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_mul</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op1</VAR>, mpz_t <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX45"></A>
+<DT><U>Function:</U> void <B>mpz_mul_ui</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op1</VAR>, unsigned long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX46"></A>
+Set <VAR>rop</VAR> to <VAR>op1</VAR> times <VAR>op2</VAR>.
+</DL>
+
+</P>
+<P>
+Division is undefined if the divisor is zero, and passing a zero divisor to
+the divide or modulo functions, as well passing a zero mod argument to the
+<CODE>mpz_powm</CODE> and <CODE>mpz_powm_ui</CODE> functions, will make these functions
+intentionally divide by zero.  This gives the user the possibility to handle
+arithmetic exceptions in these functions in the same manner as other
+arithmetic exceptions.
+
+</P>
+<P>
+There are three main groups of division functions:
+
+<UL>
+<LI>
+
+Functions that truncate the quotient towards 0.  The names of these
+functions start with <CODE>mpz_tdiv</CODE>.  The <SAMP>`t'</SAMP> in the name is short for
+<SAMP>`truncate'</SAMP>.
+<LI>
+
+Functions that round the quotient towards -infinity.  The names of
+these routines start with <CODE>mpz_fdiv</CODE>.  The <SAMP>`f'</SAMP> in the name is
+short for <SAMP>`floor'</SAMP>.
+<LI>
+
+Functions that round the quotient towards +infinity.  The names of
+these routines start with <CODE>mpz_cdiv</CODE>.  The <SAMP>`c'</SAMP> in the name is
+short for <SAMP>`ceil'</SAMP>.
+</UL>
+
+<P>
+For each rounding mode, there are a couple of variants.  Here <SAMP>`q'</SAMP> means
+that the quotient is computed, while <SAMP>`r'</SAMP> means that the remainder is
+computed.  Functions that compute both the quotient and remainder have
+<SAMP>`qr'</SAMP> in the name.
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_tdiv_q</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op1</VAR>, mpz_t <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX47"></A>
+<DT><U>Function:</U> void <B>mpz_tdiv_q_ui</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op1</VAR>, unsigned long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX48"></A>
+Set <VAR>rop</VAR> to [<VAR>op1</VAR> / <VAR>op2</VAR>].  The quotient is truncated towards
+0.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_tdiv_r</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op1</VAR>, mpz_t <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX49"></A>
+<DT><U>Function:</U> void <B>mpz_tdiv_r_ui</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op1</VAR>, unsigned long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX50"></A>
+Set <VAR>rop</VAR> to (<VAR>op1</VAR> - [<VAR>op1</VAR> / <VAR>op2</VAR>] * <VAR>op2</VAR>).
+Unless the remainder is zero, it has the same sign as the dividend.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_tdiv_qr</B> <I>(mpz_t <VAR>rop1</VAR>, mpz_t <VAR>rop2</VAR>, mpz_t <VAR>op1</VAR>, mpz_t <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX51"></A>
+<DT><U>Function:</U> void <B>mpz_tdiv_qr_ui</B> <I>(mpz_t <VAR>rop1</VAR>, mpz_t <VAR>rop2</VAR>, mpz_t <VAR>op1</VAR>, unsigned long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX52"></A>
+Divide <VAR>op1</VAR> by <VAR>op2</VAR> and put the quotient in <VAR>rop1</VAR> and the
+remainder in <VAR>rop2</VAR>.  The quotient is rounded towards 0.  Unless the
+remainder is zero, it has the same sign as the dividend.
+
+</P>
+<P>
+If <VAR>rop1</VAR> and <VAR>rop2</VAR> are the same variable, the results are
+undefined.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_fdiv_q</B> <I>(mpz_t <VAR>rop1</VAR>, mpz_t <VAR>op1</VAR>, mpz_t <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX53"></A>
+<DT><U>Function:</U> void <B>mpz_fdiv_q_ui</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op1</VAR>, unsigned long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX54"></A>
+Set <VAR>rop</VAR> to
+(I.e., round the quotient towards
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_fdiv_r</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op1</VAR>, mpz_t <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX55"></A>
+<DT><U>Function:</U> unsigned long int <B>mpz_fdiv_r_ui</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op1</VAR>, unsigned long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX56"></A>
+Divide <VAR>op1</VAR> by <VAR>op2</VAR> and put the remainder in <VAR>rop</VAR>.  Unless
+the remainder is zero, it has the same sign as the divisor.
+
+</P>
+<P>
+For <CODE>mpz_fdiv_r_ui</CODE> the remainder is small enough to fit in an
+<CODE>unsigned long int</CODE>, and is therefore returned.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_fdiv_qr</B> <I>(mpz_t <VAR>rop1</VAR>, mpz_t <VAR>rop2</VAR>, mpz_t <VAR>op1</VAR>, mpz_t <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX57"></A>
+<DT><U>Function:</U> unsigned long int <B>mpz_fdiv_qr_ui</B> <I>(mpz_t <VAR>rop1</VAR>, mpz_t <VAR>rop2</VAR>, mpz_t <VAR>op1</VAR>, unsigned long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX58"></A>
+Divide <VAR>op1</VAR> by <VAR>op2</VAR> and put the quotient in <VAR>rop1</VAR> and the
+remainder in <VAR>rop2</VAR>.  The quotient is rounded towards -infinity.
+Unless the remainder is zero, it has the same sign as the divisor.
+
+</P>
+<P>
+For <CODE>mpz_fdiv_qr_ui</CODE> the remainder is small enough to fit in an
+<CODE>unsigned long int</CODE>, and is therefore returned.
+
+</P>
+<P>
+If <VAR>rop1</VAR> and <VAR>rop2</VAR> are the same variable, the results are
+undefined.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> unsigned long int <B>mpz_fdiv_ui</B> <I>(mpz_t <VAR>op1</VAR>, unsigned long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX59"></A>
+This function is similar to <CODE>mpz_fdiv_r_ui</CODE>, but the remainder is only
+returned; it is not stored anywhere.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_cdiv_q</B> <I>(mpz_t <VAR>rop1</VAR>, mpz_t <VAR>op1</VAR>, mpz_t <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX60"></A>
+<DT><U>Function:</U> void <B>mpz_cdiv_q_ui</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op1</VAR>, unsigned long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX61"></A>
+Set <VAR>rop</VAR> to
+(I.e., round the quotient towards
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_cdiv_r</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op1</VAR>, mpz_t <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX62"></A>
+<DT><U>Function:</U> unsigned long int <B>mpz_cdiv_r_ui</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op1</VAR>, unsigned long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX63"></A>
+Divide <VAR>op1</VAR> by <VAR>op2</VAR> and put the remainder in <VAR>rop</VAR>.  Unless
+the remainder is zero, it has the opposite sign as the divisor.
+
+</P>
+<P>
+For <CODE>mpz_cdiv_r_ui</CODE> the negated remainder is small enough to fit in an
+<CODE>unsigned long int</CODE>, and it is therefore returned.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_cdiv_qr</B> <I>(mpz_t <VAR>rop1</VAR>, mpz_t <VAR>rop2</VAR>, mpz_t <VAR>op1</VAR>, mpz_t <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX64"></A>
+<DT><U>Function:</U> unsigned long int <B>mpz_cdiv_qr_ui</B> <I>(mpz_t <VAR>rop1</VAR>, mpz_t <VAR>rop2</VAR>, mpz_t <VAR>op1</VAR>, unsigned long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX65"></A>
+Divide <VAR>op1</VAR> by <VAR>op2</VAR> and put the quotient in <VAR>rop1</VAR> and the
+remainder in <VAR>rop2</VAR>.  The quotient is rounded towards +infinity.  Unless
+the remainder is zero, it has the opposite sign as the divisor.
+
+</P>
+<P>
+For <CODE>mpz_cdiv_qr_ui</CODE> the negated remainder is small enough to fit in an
+<CODE>unsigned long int</CODE>, and it is therefore returned.
+
+</P>
+<P>
+If <VAR>rop1</VAR> and <VAR>rop2</VAR> are the same variable, the results are
+undefined.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> unsigned long int <B>mpz_cdiv_ui</B> <I>(mpz_t <VAR>op1</VAR>, unsigned long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX66"></A>
+Return the negated remainder, similar to <CODE>mpz_cdiv_r_ui</CODE>.  (The
+difference is that this function doesn't store the remainder anywhere.)
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_mod</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op1</VAR>, mpz_t <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX67"></A>
+<DT><U>Function:</U> unsigned long int <B>mpz_mod_ui</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op1</VAR>, unsigned long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX68"></A>
+Set <VAR>rop</VAR> to <VAR>op1</VAR> <CODE>mod</CODE> <VAR>op2</VAR>.  The sign of the divisor is
+ignored, and the result is always non-negative.
+
+</P>
+<P>
+For <CODE>mpz_mod_ui</CODE> the remainder is small enough to fit in an
+<CODE>unsigned long int</CODE>, and is therefore returned.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_divexact</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op1</VAR>, mpz_t <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX69"></A>
+Set <VAR>rop</VAR> to <VAR>op1</VAR> / <VAR>op2</VAR>.  This function produces correct
+results only when it is known in advance that <VAR>op2</VAR> divides
+<VAR>op1</VAR>.
+
+</P>
+<P>
+Since mpz_divexact is much faster than any of the other routines that produce
+the quotient (see section <A HREF="gmp.html#SEC43">References</A> Jebelean), it is the best choice for
+instances in which exact division is known to occur, such as reducing a
+rational to lowest terms.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_sqrt</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op</VAR>)</I>
+<DD><A NAME="IDX70"></A>
+Set <VAR>rop</VAR> to
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_sqrtrem</B> <I>(mpz_t <VAR>rop1</VAR>, mpz_t <VAR>rop2</VAR>, mpz_t <VAR>op</VAR>)</I>
+<DD><A NAME="IDX71"></A>
+Set <VAR>rop1</VAR> to
+like <CODE>mpz_sqrt</CODE>.  Set <VAR>rop2</VAR> to
+(i.e., zero if <VAR>op</VAR> is a perfect square).
+
+</P>
+<P>
+If <VAR>rop1</VAR> and <VAR>rop2</VAR> are the same variable, the results are
+undefined.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> int <B>mpz_perfect_square_p</B> <I>(mpz_t <VAR>op</VAR>)</I>
+<DD><A NAME="IDX72"></A>
+Return non-zero if <VAR>op</VAR> is a perfect square, i.e., if the square root of
+<VAR>op</VAR> is an integer.  Return zero otherwise.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> int <B>mpz_probab_prime_p</B> <I>(mpz_t <VAR>op</VAR>, int <VAR>reps</VAR>)</I>
+<DD><A NAME="IDX73"></A>
+If this function returns 0, <VAR>op</VAR> is definitely not prime.  If it returns
+1, then <VAR>op</VAR> is `probably' prime.  The probability of a false positive is
+A reasonable value of reps is 25.
+
+</P>
+<P>
+An implementation of the probabilistic primality test found in Seminumerical
+Algorithms (see section <A HREF="gmp.html#SEC43">References</A> Knuth).
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_powm</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>base</VAR>, mpz_t <VAR>exp</VAR>, mpz_t <VAR>mod</VAR>)</I>
+<DD><A NAME="IDX74"></A>
+<DT><U>Function:</U> void <B>mpz_powm_ui</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>base</VAR>, unsigned long int <VAR>exp</VAR>, mpz_t <VAR>mod</VAR>)</I>
+<DD><A NAME="IDX75"></A>
+Set <VAR>rop</VAR> to (<VAR>base</VAR> raised to <VAR>exp</VAR>) <CODE>mod</CODE> <VAR>mod</VAR>.  If
+<VAR>exp</VAR> is negative, the result is undefined.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_pow_ui</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>base</VAR>, unsigned long int <VAR>exp</VAR>)</I>
+<DD><A NAME="IDX76"></A>
+<DT><U>Function:</U> void <B>mpz_ui_pow_ui</B> <I>(mpz_t <VAR>rop</VAR>, unsigned long int <VAR>base</VAR>, unsigned long int <VAR>exp</VAR>)</I>
+<DD><A NAME="IDX77"></A>
+Set <VAR>rop</VAR> to <VAR>base</VAR> raised to <VAR>exp</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_fac_ui</B> <I>(mpz_t <VAR>rop</VAR>, unsigned long int <VAR>op</VAR>)</I>
+<DD><A NAME="IDX78"></A>
+Set <VAR>rop</VAR> to <VAR>op</VAR>!, the factorial of <VAR>op</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_gcd</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op1</VAR>, mpz_t <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX79"></A>
+Set <VAR>rop</VAR> to the greatest common divisor of <VAR>op1</VAR> and <VAR>op2</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> unsigned long int <B>mpz_gcd_ui</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op1</VAR>, unsigned long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX80"></A>
+Compute the greatest common divisor of <VAR>op1</VAR> and <VAR>op2</VAR>.  If
+<VAR>rop</VAR> is not NULL, store the result there.
+
+</P>
+<P>
+If the result is small enough to fit in an <CODE>unsigned long int</CODE>, it is
+returned.  If the result does not fit, 0 is returned, and the result is equal
+to the argument <VAR>op1</VAR>.  Note that the result will always fit if <VAR>op2</VAR>
+is non-zero.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_gcdext</B> <I>(mpz_t <VAR>g</VAR>, mpz_t <VAR>s</VAR>, mpz_t <VAR>t</VAR>, mpz_t <VAR>a</VAR>, mpz_t <VAR>b</VAR>)</I>
+<DD><A NAME="IDX81"></A>
+Compute <VAR>g</VAR>, <VAR>s</VAR>, and <VAR>t</VAR>, such that <VAR>a</VAR><VAR>s</VAR> +
+<VAR>b</VAR><VAR>t</VAR> = <VAR>g</VAR> = <CODE>gcd</CODE> (<VAR>a</VAR>, <VAR>b</VAR>).  If <VAR>t</VAR> is
+NULL, that argument is not computed.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> int <B>mpz_invert</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op1</VAR>, mpz_t <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX82"></A>
+Compute the inverse of <VAR>op1</VAR> modulo <VAR>op2</VAR> and put the result in
+<VAR>rop</VAR>.  Return non-zero if an inverse exist, zero otherwise.  When the
+function returns zero, do not assume anything about the value in <VAR>rop</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_neg</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op</VAR>)</I>
+<DD><A NAME="IDX83"></A>
+Set <VAR>rop</VAR> to -<VAR>op</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_abs</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op</VAR>)</I>
+<DD><A NAME="IDX84"></A>
+Set <VAR>rop</VAR> to the absolute value of <VAR>op</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_mul_2exp</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op1</VAR>, unsigned long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX85"></A>
+Set <VAR>rop</VAR> to <VAR>op1</VAR> times 2 raised to <VAR>op2</VAR>.  This operation can
+also be defined as a left shift, <VAR>op2</VAR> steps.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_tdiv_q_2exp</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op1</VAR>, unsigned long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX86"></A>
+Set <VAR>rop</VAR> to <VAR>op1</VAR> divided by 2 raised to <VAR>op2</VAR>.  The quotient is
+rounded towards 0.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_fdiv_q_2exp</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op1</VAR>, unsigned long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX87"></A>
+Set <VAR>rop</VAR> to <VAR>op1</VAR> divided by 2 raised to <VAR>op2</VAR>.  The quotient is
+rounded towards -infinity.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_tdiv_r_2exp</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op1</VAR>, unsigned long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX88"></A>
+Divide <VAR>op1</VAR> by (2 raised to <VAR>op2</VAR>) and put the remainder in
+<VAR>rop</VAR>.  The sign of <VAR>rop</VAR> will have the same sign as <VAR>op1</VAR>, unless
+is becomes zero.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_fdiv_r_2exp</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op1</VAR>, unsigned long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX89"></A>
+Divide <VAR>op1</VAR> by (2 raised to <VAR>op2</VAR>) and put the remainder in
+<VAR>rop</VAR>.  The sign of <VAR>rop</VAR> will always be positive.
+
+</P>
+<P>
+This operation can also be defined as masking of the <VAR>op2</VAR> least
+significant bits.
+</DL>
+
+</P>
+
+
+<H2><A NAME="SEC20" HREF="gmp.html#TOC20">Comparison Functions</A></H2>
+
+<P>
+<DL>
+<DT><U>Function:</U> int <B>mpz_cmp</B> <I>(mpz_t <VAR>op1</VAR>, mpz_t <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX90"></A>
+<DT><U>Function:</U> int <B>mpz_cmp_ui</B> <I>(mpz_t <VAR>op1</VAR>, unsigned long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX91"></A>
+<DT><U>Function:</U> int <B>mpz_cmp_si</B> <I>(mpz_t <VAR>op1</VAR>, signed long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX92"></A>
+Compare <VAR>op1</VAR> and <VAR>op2</VAR>.  Return a positive value if <VAR>op1</VAR> &#62;
+<VAR>op2</VAR>, zero if <VAR>op1</VAR> = <VAR>op2</VAR>, and a negative value if <VAR>op1</VAR>
+&#60; <VAR>op2</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> int <B>mpz_sgn</B> <I>(mpz_t <VAR>op</VAR>)</I>
+<DD><A NAME="IDX93"></A>
+Return +1 if <VAR>op</VAR> &#62; 0, 0 if <VAR>op</VAR> = 0, and -1 if <VAR>op</VAR> &#60; 0.
+</DL>
+
+</P>
+
+
+<H2><A NAME="SEC21" HREF="gmp.html#TOC21">Logical and Bit Manipulation Functions</A></H2>
+<P>
+<A NAME="IDX94"></A>
+<A NAME="IDX95"></A>
+
+</P>
+<P>
+These functions behave as if two's complement arithmetic were used (although
+sign-magnitude is used by the actual implementation).
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_and</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op1</VAR>, mpz_t <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX96"></A>
+Set <VAR>rop</VAR> to <VAR>op1</VAR> logical-and <VAR>op2</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_ior</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op1</VAR>, mpz_t <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX97"></A>
+Set <VAR>rop</VAR> to <VAR>op1</VAR> inclusive-or <VAR>op2</VAR>.
+</DL>
+
+</P>
+
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_com</B> <I>(mpz_t <VAR>rop</VAR>, mpz_t <VAR>op</VAR>)</I>
+<DD><A NAME="IDX98"></A>
+Set <VAR>rop</VAR> to the one's complement of <VAR>op</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> unsigned long int <B>mpz_popcount</B> <I>(mpz_t <VAR>op</VAR>)</I>
+<DD><A NAME="IDX99"></A>
+For non-negative numbers, return the population count of <VAR>op</VAR>.  For
+negative numbers, return the largest possible value (<VAR>MAX_ULONG</VAR>).
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> unsigned long int <B>mpz_hamdist</B> <I>(mpz_t <VAR>op1</VAR>, mpz_t <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX100"></A>
+If <VAR>op1</VAR> and <VAR>op2</VAR> are both non-negative, return the hamming distance
+between the two operands.  Otherwise, return the largest possible value
+(<VAR>MAX_ULONG</VAR>).
+
+</P>
+<P>
+It is possible to extend this function to return a useful value when the
+operands are both negative, but the current implementation returns
+<VAR>MAX_ULONG</VAR> in this case.  <STRONG>Do not depend on this behavior, since
+it will change in future versions of the library.</STRONG>
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> unsigned long int <B>mpz_scan0</B> <I>(mpz_t <VAR>op</VAR>, unsigned long int <VAR>starting_bit</VAR>)</I>
+<DD><A NAME="IDX101"></A>
+Scan <VAR>op</VAR>, starting with bit <VAR>starting_bit</VAR>, towards more significant
+bits, until the first clear bit is found.  Return the index of the found bit.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> unsigned long int <B>mpz_scan1</B> <I>(mpz_t <VAR>op</VAR>, unsigned long int <VAR>starting_bit</VAR>)</I>
+<DD><A NAME="IDX102"></A>
+Scan <VAR>op</VAR>, starting with bit <VAR>starting_bit</VAR>, towards more significant
+bits, until the first set bit is found.  Return the index of the found bit.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_setbit</B> <I>(mpz_t <VAR>rop</VAR>, unsigned long int <VAR>bit_index</VAR>)</I>
+<DD><A NAME="IDX103"></A>
+Set bit <VAR>bit_index</VAR> in <VAR>op1</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_clrbit</B> <I>(mpz_t <VAR>rop</VAR>, unsigned long int <VAR>bit_index</VAR>)</I>
+<DD><A NAME="IDX104"></A>
+Clear bit <VAR>bit_index</VAR> in <VAR>op1</VAR>.
+</DL>
+
+</P>
+
+
+<H2><A NAME="SEC22" HREF="gmp.html#TOC22">Input and Output Functions</A></H2>
+<P>
+<A NAME="IDX105"></A>
+<A NAME="IDX106"></A>
+<A NAME="IDX107"></A>
+<A NAME="IDX108"></A>
+
+</P>
+<P>
+Functions that perform input from a stdio stream, and functions that output to
+a stdio stream.  Passing a NULL pointer for a <VAR>stream</VAR> argument to any of
+these functions will make them read from <CODE>stdin</CODE> and write to
+<CODE>stdout</CODE>, respectively.
+
+</P>
+<P>
+When using any of these functions, it is a good idea to include <TT>`stdio.h'</TT>
+before <TT>`gmp.h'</TT>, since that will allow <TT>`gmp.h'</TT> to define prototypes
+for these functions.
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> size_t <B>mpz_out_str</B> <I>(FILE *<VAR>stream</VAR>, int <VAR>base</VAR>, mpz_t <VAR>op</VAR>)</I>
+<DD><A NAME="IDX109"></A>
+Output <VAR>op</VAR> on stdio stream <VAR>stream</VAR>, as a string of digits in base
+<VAR>base</VAR>.  The base may vary from 2 to 36.
+
+</P>
+<P>
+Return the number of bytes written, or if an error occurred, return 0.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> size_t <B>mpz_inp_str</B> <I>(mpz_t <VAR>rop</VAR>, FILE *<VAR>stream</VAR>, int <VAR>base</VAR>)</I>
+<DD><A NAME="IDX110"></A>
+Input a possibly white-space preceded string in base <VAR>base</VAR> from stdio
+stream <VAR>stream</VAR>, and put the read integer in <VAR>rop</VAR>.  The base may vary
+from 2 to 36.  If <VAR>base</VAR> is 0, the actual base is determined from the
+leading characters: if the first two characters are `0x' or `0X', hexadecimal
+is assumed, otherwise if the first character is `0', octal is assumed,
+otherwise decimal is assumed.
+
+</P>
+<P>
+Return the number of bytes read, or if an error occurred, return 0.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> size_t <B>mpz_out_raw</B> <I>(FILE *<VAR>stream</VAR>, mpz_t <VAR>op</VAR>)</I>
+<DD><A NAME="IDX111"></A>
+Output <VAR>op</VAR> on stdio stream <VAR>stream</VAR>, in raw binary format.  The
+integer is written in a portable format, with 4 bytes of size information, and
+that many bytes of limbs.  Both the size and the limbs are written in
+decreasing significance order (i.e., in big-endian).
+
+</P>
+<P>
+The output can be read with <CODE>mpz_inp_raw</CODE>.
+
+</P>
+<P>
+Return the number of bytes written, or if an error occurred, return 0.
+
+</P>
+<P>
+The output of this can not be read by <CODE>mpz_inp_raw</CODE> from GMP 1, because
+of changes necessary for compatibility between 32-bit and 64-bit machines.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> size_t <B>mpz_inp_raw</B> <I>(mpz_t <VAR>rop</VAR>, FILE *<VAR>stream</VAR>)</I>
+<DD><A NAME="IDX112"></A>
+Input from stdio stream <VAR>stream</VAR> in the format written by
+<CODE>mpz_out_raw</CODE>, and put the result in <VAR>rop</VAR>.  Return the number of
+bytes read, or if an error occurred, return 0.
+
+</P>
+<P>
+This routine can read the output from <CODE>mpz_out_raw</CODE> also from GMP 1, in
+spite of changes necessary for compatibility between 32-bit and 64-bit
+machines.
+</DL>
+
+</P>
+
+
+
+<H2><A NAME="SEC23" HREF="gmp.html#TOC23">Miscellaneous Functions</A></H2>
+<P>
+<A NAME="IDX113"></A>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_random</B> <I>(mpz_t <VAR>rop</VAR>, mp_size_t <VAR>max_size</VAR>)</I>
+<DD><A NAME="IDX114"></A>
+Generate a random integer of at most <VAR>max_size</VAR> limbs.  The generated
+random number doesn't satisfy any particular requirements of randomness.
+Negative random numbers are generated when <VAR>max_size</VAR> is negative.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpz_random2</B> <I>(mpz_t <VAR>rop</VAR>, mp_size_t <VAR>max_size</VAR>)</I>
+<DD><A NAME="IDX115"></A>
+Generate a random integer of at most <VAR>max_size</VAR> limbs, with long strings
+of zeros and ones in the binary representation.  Useful for testing functions
+and algorithms, since this kind of random numbers have proven to be more
+likely to trigger corner-case bugs.  Negative random numbers are generated
+when <VAR>max_size</VAR> is negative.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> size_t <B>mpz_size</B> <I>(mpz_t <VAR>op</VAR>)</I>
+<DD><A NAME="IDX116"></A>
+Return the size of <VAR>op</VAR> measured in number of limbs.  If <VAR>op</VAR> is zero,
+the returned value will be zero.
+
+</P>
+<P>
+<STRONG>This function is obsolete.  It will disappear from future MP
+releases.</STRONG>
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> size_t <B>mpz_sizeinbase</B> <I>(mpz_t <VAR>op</VAR>, int <VAR>base</VAR>)</I>
+<DD><A NAME="IDX117"></A>
+Return the size of <VAR>op</VAR> measured in number of digits in base <VAR>base</VAR>.
+The base may vary from 2 to 36.  The returned value will be exact or 1 too
+big.  If <VAR>base</VAR> is a power of 2, the returned value will always be exact.
+
+</P>
+<P>
+This function is useful in order to allocate the right amount of space before
+converting <VAR>op</VAR> to a string.  The right amount of allocation is normally
+two more than the value returned by <CODE>mpz_sizeinbase</CODE> (one extra for a
+minus sign and one for the terminating '\0').
+</DL>
+
+</P>
+
+
+
+<H1><A NAME="SEC24" HREF="gmp.html#TOC24">Rational Number Functions</A></H1>
+<P>
+<A NAME="IDX118"></A>
+
+</P>
+<P>
+This chapter describes the MP functions for performing arithmetic on rational
+numbers.  These functions start with the prefix <CODE>mpq_</CODE>.
+
+</P>
+<P>
+Rational numbers are stored in objects of type <CODE>mpq_t</CODE>.
+
+</P>
+<P>
+All rational arithmetic functions assume operands have a canonical form, and
+canonicalize their result.  The canonical from means that the denominator and
+the numerator have no common factors, and that the denominator is positive.
+Zero has the unique representation 0/1.
+
+</P>
+<P>
+Pure assignment functions do not canonicalize the assigned variable.  It is
+the responsibility of the user to canonicalize the assigned variable before
+any arithmetic operations are performed on that variable.  <STRONG>Note that
+this is an incompatible change from version 1 of the library.</STRONG>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpq_canonicalize</B> <I>(mpq_t <VAR>op</VAR>)</I>
+<DD><A NAME="IDX119"></A>
+Remove any factors that are common to the numerator and denominator of
+<VAR>op</VAR>, and make the denominator positive.
+</DL>
+
+</P>
+
+
+
+<H2><A NAME="SEC25" HREF="gmp.html#TOC25">Initialization and Assignment Functions</A></H2>
+
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpq_init</B> <I>(mpq_t <VAR>dest_rational</VAR>)</I>
+<DD><A NAME="IDX120"></A>
+Initialize <VAR>dest_rational</VAR> and set it to 0/1.  Each variable should
+normally only be initialized once, or at least cleared out (using the function
+<CODE>mpq_clear</CODE>) between each initialization.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpq_clear</B> <I>(mpq_t <VAR>rational_number</VAR>)</I>
+<DD><A NAME="IDX121"></A>
+Free the space occupied by <VAR>rational_number</VAR>.  Make sure to call this
+function for all <CODE>mpq_t</CODE> variables when you are done with them.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpq_set</B> <I>(mpq_t <VAR>rop</VAR>, mpq_t <VAR>op</VAR>)</I>
+<DD><A NAME="IDX122"></A>
+Assign <VAR>rop</VAR> from <VAR>op</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpq_set_ui</B> <I>(mpq_t <VAR>rop</VAR>, unsigned long int <VAR>op1</VAR>, unsigned long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX123"></A>
+<DT><U>Function:</U> void <B>mpq_set_si</B> <I>(mpq_t <VAR>rop</VAR>, signed long int <VAR>op1</VAR>, unsigned long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX124"></A>
+Set the value of <VAR>rop</VAR> to <VAR>op1</VAR>/<VAR>op2</VAR>.  Note that if <VAR>op1</VAR> and
+<VAR>op2</VAR> have common factors, <VAR>rop</VAR> has to be passed to
+<CODE>mpq_canonicalize</CODE> before any operations are performed on <VAR>rop</VAR>.
+</DL>
+
+</P>
+
+
+<H2><A NAME="SEC26" HREF="gmp.html#TOC26">Arithmetic Functions</A></H2>
+
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpq_add</B> <I>(mpq_t <VAR>sum</VAR>, mpq_t <VAR>addend1</VAR>, mpq_t <VAR>addend2</VAR>)</I>
+<DD><A NAME="IDX125"></A>
+Set <VAR>sum</VAR> to <VAR>addend1</VAR> + <VAR>addend2</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpq_sub</B> <I>(mpq_t <VAR>difference</VAR>, mpq_t <VAR>minuend</VAR>, mpq_t <VAR>subtrahend</VAR>)</I>
+<DD><A NAME="IDX126"></A>
+Set <VAR>difference</VAR> to <VAR>minuend</VAR> - <VAR>subtrahend</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpq_mul</B> <I>(mpq_t <VAR>product</VAR>, mpq_t <VAR>multiplier</VAR>, mpq_t <VAR>multiplicand</VAR>)</I>
+<DD><A NAME="IDX127"></A>
+Set <VAR>product</VAR> to <VAR>multiplier</VAR> times <VAR>multiplicand</VAR>
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpq_div</B> <I>(mpq_t <VAR>quotient</VAR>, mpq_t <VAR>dividend</VAR>, mpq_t <VAR>divisor</VAR>)</I>
+<DD><A NAME="IDX128"></A>
+Set <VAR>quotient</VAR> to <VAR>dividend</VAR> / <VAR>divisor</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpq_neg</B> <I>(mpq_t <VAR>negated_operand</VAR>, mpq_t <VAR>operand</VAR>)</I>
+<DD><A NAME="IDX129"></A>
+Set <VAR>negated_operand</VAR> to -<VAR>operand</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpq_inv</B> <I>(mpq_t <VAR>inverted_number</VAR>, mpq_t <VAR>number</VAR>)</I>
+<DD><A NAME="IDX130"></A>
+Set <VAR>inverted_number</VAR> to 1 / <VAR>number</VAR>.  If the new denominator is
+zero, this routine will divide by zero.
+</DL>
+
+</P>
+
+
+<H2><A NAME="SEC27" HREF="gmp.html#TOC27">Comparison Functions</A></H2>
+
+<P>
+<DL>
+<DT><U>Function:</U> int <B>mpq_cmp</B> <I>(mpq_t <VAR>op1</VAR>, mpq_t <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX131"></A>
+Compare <VAR>op1</VAR> and <VAR>op2</VAR>.  Return a positive value if <VAR>op1</VAR> &#62;
+<VAR>op2</VAR>, zero if <VAR>op1</VAR> = <VAR>op2</VAR>, and a negative value if <VAR>op1</VAR> &#60;
+<VAR>op2</VAR>.
+
+</P>
+<P>
+To determine if two rationals are equal, <CODE>mpq_equal</CODE> is faster than this
+<CODE>mpq_cmp</CODE>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> int <B>mpq_cmp_ui</B> <I>(mpq_t <VAR>op1</VAR>, unsigned long int <VAR>num2</VAR>, unsigned long int <VAR>den2</VAR>)</I>
+<DD><A NAME="IDX132"></A>
+Compare <VAR>op1</VAR> and <VAR>num2</VAR>/<VAR>den2</VAR>.  Return a positive value if
+<VAR>op1</VAR> &#62; <VAR>num2</VAR>/<VAR>den2</VAR>, zero if <VAR>op1</VAR> = <VAR>num2</VAR>/<VAR>den2</VAR>,
+and a negative value if <VAR>op1</VAR> &#60; <VAR>num2</VAR>/<VAR>den2</VAR>.
+
+</P>
+<P>
+This routine allows that <VAR>num2</VAR> and <VAR>den2</VAR> have common factors.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> int <B>mpq_sgn</B> <I>(mpq_t <VAR>op</VAR>)</I>
+<DD><A NAME="IDX133"></A>
+Return +1 if <VAR>op</VAR> &#62; 0, 0 if <VAR>op</VAR> = 0, and -1 if <VAR>op</VAR> &#60; 0.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> int <B>mpq_equal</B> <I>(mpq_t <VAR>op1</VAR>, mpq_t <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX134"></A>
+Return non-zero if <VAR>op1</VAR> and <VAR>op2</VAR> are equal, zero if they are
+non-equal.  Although <CODE>mpq_cmp</CODE> can be used for the same purpose, this
+function is much faster.
+</DL>
+
+</P>
+
+
+<H2><A NAME="SEC28" HREF="gmp.html#TOC28">Applying Integer Functions to Rationals</A></H2>
+
+<P>
+The set of <CODE>mpq</CODE> functions is quite small.  In particular, there are no
+functions for either input or output.  But there are two macros that allow us
+to apply any <CODE>mpz</CODE> function on the numerator or denominator of a rational
+number.  If these macros are used to assign to the rational number,
+<CODE>mpq_canonicalize</CODE> normally need to be called afterwards.
+
+</P>
+<P>
+<DL>
+<DT><U>Macro:</U> mpz_t <B>mpq_numref</B> <I>(mpq_t <VAR>op</VAR>)</I>
+<DD><A NAME="IDX135"></A>
+<DT><U>Macro:</U> mpz_t <B>mpq_denref</B> <I>(mpq_t <VAR>op</VAR>)</I>
+<DD><A NAME="IDX136"></A>
+Return a reference to the numerator and denominator of <VAR>op</VAR>, respectively.
+The <CODE>mpz</CODE> functions can be used on the result of these macros.
+</DL>
+
+</P>
+
+
+<H2><A NAME="SEC29" HREF="gmp.html#TOC29">Miscellaneous Functions</A></H2>
+
+<P>
+These functions assign between either the numerator or denominator of a
+rational, and an integer.  Instead of using these functions, it is preferable
+to use the more general mechanisms <CODE>mpq_numref</CODE> and <CODE>mpq_denref</CODE>,
+together with <CODE>mpz_set</CODE>.
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpq_set_num</B> <I>(mpq_t <VAR>rational</VAR>, mpz_t <VAR>numerator</VAR>)</I>
+<DD><A NAME="IDX137"></A>
+Copy <VAR>numerator</VAR> to the numerator of <VAR>rational</VAR>.  When this risks to
+make the numerator and denominator of <VAR>rational</VAR> have common factors, you
+have to pass <VAR>rational</VAR> to <CODE>mpq_canonicalize</CODE> before any operations
+are performed on <VAR>rational</VAR>.
+
+</P>
+<P>
+This function is equivalent to
+<CODE>mpz_set (mpq_numref (<VAR>rational</VAR>), <VAR>numerator</VAR>)</CODE>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpq_set_den</B> <I>(mpq_t <VAR>rational</VAR>, mpz_t <VAR>denominator</VAR>)</I>
+<DD><A NAME="IDX138"></A>
+Copy <VAR>denominator</VAR> to the denominator of <VAR>rational</VAR>.  When this risks
+to make the numerator and denominator of <VAR>rational</VAR> have common factors,
+or if the denominator might be negative, you have to pass <VAR>rational</VAR> to
+<CODE>mpq_canonicalize</CODE> before any operations are performed on <VAR>rational</VAR>.
+
+</P>
+<P>
+<STRONG>In version 1 of the library, negative denominators were handled by
+copying the sign to the numerator.  That is no longer done.</STRONG>
+
+</P>
+<P>
+This function is equivalent to
+<CODE>mpz_set (mpq_denref (<VAR>rational</VAR>), <VAR>denominators</VAR>)</CODE>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpq_get_num</B> <I>(mpz_t <VAR>numerator</VAR>, mpq_t <VAR>rational</VAR>)</I>
+<DD><A NAME="IDX139"></A>
+Copy the numerator of <VAR>rational</VAR> to the integer <VAR>numerator</VAR>, to
+prepare for integer operations on the numerator.
+
+</P>
+<P>
+This function is equivalent to
+<CODE>mpz_set (<VAR>numerator</VAR>, mpq_numref (<VAR>rational</VAR>))</CODE>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpq_get_den</B> <I>(mpz_t <VAR>denominator</VAR>, mpq_t <VAR>rational</VAR>)</I>
+<DD><A NAME="IDX140"></A>
+Copy the denominator of <VAR>rational</VAR> to the integer <VAR>denominator</VAR>, to
+prepare for integer operations on the denominator.
+
+</P>
+<P>
+This function is equivalent to
+<CODE>mpz_set (<VAR>denominator</VAR>, mpq_denref (<VAR>rational</VAR>))</CODE>.
+</DL>
+
+</P>
+
+
+
+<H1><A NAME="SEC30" HREF="gmp.html#TOC30">Floating-point Functions</A></H1>
+<P>
+<A NAME="IDX141"></A>
+<A NAME="IDX142"></A>
+
+</P>
+<P>
+This is a description of the <EM>preliminary</EM> interface for floating-point
+arithmetic in GNU MP 2.
+
+</P>
+<P>
+The floating-point functions expect arguments of type <CODE>mpf_t</CODE>.
+
+</P>
+<P>
+The MP floating-point functions have an interface that is similar to the MP
+integer functions.  The function prefix for floating-point operations is
+<CODE>mpf_</CODE>.
+
+</P>
+<P>
+There is one significant characteristic of floating-point numbers that has
+motivated a difference between this function class and other MP function
+classes: the inherent inexactness of floating point arithmetic.  The user has
+to specify the precision of each variable.  A computation that assigns a
+variable will take place with the precision of the assigned variable; the
+precision of variables used as input is ignored.
+
+</P>
+<P>
+<A NAME="IDX143"></A>
+The precision of a calculation is defined as follows: Compute the requested
+operation exactly (with "infinite precision"), and truncate the result to
+the destination variable precision.  Even if the user has asked for a very
+high precision, MP will not calculate with superfluous digits.  For example,
+if two low-precision numbers of nearly equal magnitude are added, the
+precision of the result will be limited to what is required to represent the
+result accurately.
+
+</P>
+<P>
+The MP floating-point functions are <EM>not</EM> intended as a smooth extension
+to the IEEE P754 arithmetic.  Specifically, the results obtained on one
+computer often differs from the results obtained on a computer with a
+different word size.
+
+</P>
+
+
+
+<H2><A NAME="SEC31" HREF="gmp.html#TOC31">Initialization and Assignment Functions</A></H2>
+
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpf_set_default_prec</B> <I>(unsigned long int <VAR>prec</VAR>)</I>
+<DD><A NAME="IDX144"></A>
+Set the default precision to be <STRONG>at least</STRONG> <VAR>prec</VAR> bits.  All
+subsequent calls to <CODE>mpf_init</CODE> will use this precision, but previously
+initialized variables are unaffected.
+</DL>
+
+</P>
+<P>
+An <CODE>mpf_t</CODE> object must be initialized before storing the first value in
+it.  The functions <CODE>mpf_init</CODE> and <CODE>mpf_init2</CODE> are used for that
+purpose.
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpf_init</B> <I>(mpf_t <VAR>x</VAR>)</I>
+<DD><A NAME="IDX145"></A>
+Initialize <VAR>x</VAR> to 0.  Normally, a variable should be initialized once only
+or at least be cleared, using <CODE>mpf_clear</CODE>, between initializations.  The
+precision of <VAR>x</VAR> is undefined unless a default precision has already been
+established by a call to <CODE>mpf_set_default_prec</CODE>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpf_init2</B> <I>(mpf_t <VAR>x</VAR>, unsigned long int <VAR>prec</VAR>)</I>
+<DD><A NAME="IDX146"></A>
+Initialize <VAR>x</VAR> to 0 and set its precision to be <STRONG>at least</STRONG>
+<VAR>prec</VAR> bits.  Normally, a variable should be initialized once only or at
+least be cleared, using <CODE>mpf_clear</CODE>, between initializations.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpf_clear</B> <I>(mpf_t <VAR>x</VAR>)</I>
+<DD><A NAME="IDX147"></A>
+Free the space occupied by <VAR>x</VAR>.  Make sure to call this function for all
+<CODE>mpf_t</CODE> variables when you are done with them.
+</DL>
+
+</P>
+<P>
+Here is an example on how to initialize floating-point variables:
+
+<PRE>
+{
+  mpf_t x, y;
+  mpf_init (x);			/* use default precision */
+  mpf_init2 (y, 256);		/* precision <EM>at least</EM> 256 bits */
+  ...
+  /* Unless the program is about to exit, do ... */
+  mpf_clear (x);
+  mpf_clear (y);
+}
+</PRE>
+
+<P>
+The following three functions are useful for changing the precision during a
+calculation.  A typical use would be for adjusting the precision gradually in
+iterative algorithms like Newton-Raphson, making the computation precision
+closely match the actual accurate part of the numbers.
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpf_set_prec</B> <I>(mpf_t <VAR>rop</VAR>, unsigned long int <VAR>prec</VAR>)</I>
+<DD><A NAME="IDX148"></A>
+Set the precision of <VAR>rop</VAR> to be <STRONG>at least</STRONG> <VAR>prec</VAR> bits.
+Since changing the precision involves calls to <CODE>realloc</CODE>, this routine
+should not be called in a tight loop.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> unsigned long int <B>mpf_get_prec</B> <I>(mpf_t <VAR>op</VAR>)</I>
+<DD><A NAME="IDX149"></A>
+Return the precision actually used for assignments of <VAR>op</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpf_set_prec_raw</B> <I>(mpf_t <VAR>rop</VAR>, unsigned long int <VAR>prec</VAR>)</I>
+<DD><A NAME="IDX150"></A>
+Set the precision of <VAR>rop</VAR> to be <STRONG>at least</STRONG> <VAR>prec</VAR> bits.  This
+is a low-level function that does not change the allocation.  The <VAR>prec</VAR>
+argument must not be larger that the precision previously returned by
+<CODE>mpf_get_prec</CODE>.  It is crucial that the precision of <VAR>rop</VAR> is
+ultimately reset to exactly the value returned by <CODE>mpf_get_prec</CODE>.
+</DL>
+
+</P>
+
+
+
+<H3><A NAME="SEC32" HREF="gmp.html#TOC32">Assignment Functions</A></H3>
+<P>
+<A NAME="IDX151"></A>
+
+</P>
+<P>
+These functions assign new values to already initialized floats
+(see section <A HREF="gmp.html#SEC31">Initialization and Assignment Functions</A>).
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpf_set</B> <I>(mpf_t <VAR>rop</VAR>, mpf_t <VAR>op</VAR>)</I>
+<DD><A NAME="IDX152"></A>
+<DT><U>Function:</U> void <B>mpf_set_ui</B> <I>(mpf_t <VAR>rop</VAR>, unsigned long int <VAR>op</VAR>)</I>
+<DD><A NAME="IDX153"></A>
+<DT><U>Function:</U> void <B>mpf_set_si</B> <I>(mpf_t <VAR>rop</VAR>, signed long int <VAR>op</VAR>)</I>
+<DD><A NAME="IDX154"></A>
+<DT><U>Function:</U> void <B>mpf_set_d</B> <I>(mpf_t <VAR>rop</VAR>, double <VAR>op</VAR>)</I>
+<DD><A NAME="IDX155"></A>
+Set the value of <VAR>rop</VAR> from <VAR>op</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> int <B>mpf_set_str</B> <I>(mpf_t <VAR>rop</VAR>, char *<VAR>str</VAR>, int <VAR>base</VAR>)</I>
+<DD><A NAME="IDX156"></A>
+Set the value of <VAR>rop</VAR> from the string in <VAR>str</VAR>.  The string is of the
+form <SAMP>`M@N'</SAMP> or, if the base is 10 or less, alternatively <SAMP>`MeN'</SAMP>.
+<SAMP>`M'</SAMP> is the mantissa and <SAMP>`N'</SAMP> is the exponent.  The mantissa is always
+in the specified base.  The exponent is either in the specified base or, if
+<VAR>base</VAR> is negative, in decimal.
+
+</P>
+<P>
+The argument <VAR>base</VAR> may be in the ranges 2 to 36, or -36 to
+-2.  Negative values are used to specify that the exponent is in
+decimal.
+
+</P>
+<P>
+Unlike the corresponding <CODE>mpz</CODE> function, the base will not be determined
+from the leading characters of the string if <VAR>base</VAR> is 0.  This is so that
+numbers like <SAMP>`0.23'</SAMP> are not interpreted as octal.
+
+</P>
+<P>
+White space is allowed in the string, and is simply ignored.
+
+</P>
+<P>
+This function returns 0 if the entire string up to the '\0' is a valid number
+in base <VAR>base</VAR>.  Otherwise it returns -1.
+</DL>
+
+</P>
+
+
+
+<H3><A NAME="SEC33" HREF="gmp.html#TOC33">Combined Initialization and Assignment Functions</A></H3>
+<P>
+<A NAME="IDX157"></A>
+
+</P>
+<P>
+For convenience, MP provides a parallel series of initialize-and-set functions
+which initialize the output and then store the value there.  These functions'
+names have the form <CODE>mpf_init_set...</CODE>
+
+</P>
+<P>
+Once the float has been initialized by any of the <CODE>mpf_init_set...</CODE>
+functions, it can be used as the source or destination operand for the ordinary
+float functions.  Don't use an initialize-and-set function on a variable
+already initialized!
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpf_init_set</B> <I>(mpf_t <VAR>rop</VAR>, mpf_t <VAR>op</VAR>)</I>
+<DD><A NAME="IDX158"></A>
+<DT><U>Function:</U> void <B>mpf_init_set_ui</B> <I>(mpf_t <VAR>rop</VAR>, unsigned long int <VAR>op</VAR>)</I>
+<DD><A NAME="IDX159"></A>
+<DT><U>Function:</U> void <B>mpf_init_set_si</B> <I>(mpf_t <VAR>rop</VAR>, signed long int <VAR>op</VAR>)</I>
+<DD><A NAME="IDX160"></A>
+<DT><U>Function:</U> void <B>mpf_init_set_d</B> <I>(mpf_t <VAR>rop</VAR>, double <VAR>op</VAR>)</I>
+<DD><A NAME="IDX161"></A>
+Initialize <VAR>rop</VAR> and set its value from <VAR>op</VAR>.
+
+</P>
+<P>
+The precision of <VAR>rop</VAR> will be taken from the active default precision, as
+set by <CODE>mpf_set_default_prec</CODE>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> int <B>mpf_init_set_str</B> <I>(mpf_t <VAR>rop</VAR>, char *<VAR>str</VAR>, int <VAR>base</VAR>)</I>
+<DD><A NAME="IDX162"></A>
+Initialize <VAR>rop</VAR> and set its value from the string in <VAR>str</VAR>.  See
+<CODE>mpf_set_str</CODE> above for details on the assignment operation.
+
+</P>
+<P>
+Note that <VAR>rop</VAR> is initialized even if an error occurs.  (I.e., you have to
+call <CODE>mpf_clear</CODE> for it.)
+
+</P>
+<P>
+The precision of <VAR>rop</VAR> will be taken from the active default precision, as
+set by <CODE>mpf_set_default_prec</CODE>.
+</DL>
+
+</P>
+
+
+
+<H2><A NAME="SEC34" HREF="gmp.html#TOC34">Conversion Functions</A></H2>
+<P>
+<A NAME="IDX163"></A>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> char * <B>mpf_get_str</B> <I>(char *<VAR>str</VAR>, mp_exp_t *<VAR>expptr</VAR>, int <VAR>base</VAR>, size_t <VAR>n_digits</VAR>, mpf_t <VAR>op</VAR>)</I>
+<DD><A NAME="IDX164"></A>
+Convert <VAR>op</VAR> to a string of digits in base <VAR>base</VAR>.  The base may vary
+from 2 to 36.  Generate at most <VAR>n_digits</VAR> significant digits, or if
+<VAR>n_digits</VAR> is 0, the maximum number of digits accurately representable by
+<VAR>op</VAR>.
+
+</P>
+<P>
+If <VAR>str</VAR> is NULL, space for the mantissa is allocated using the default
+allocation function, and a pointer to the string is returned.
+
+</P>
+<P>
+If <VAR>str</VAR> is not NULL, it should point to a block of storage enough large
+for the mantissa, i.e., <VAR>n_digits</VAR> + 2.  The two extra bytes are for a
+possible minus sign, and for the terminating null character.
+
+</P>
+<P>
+The exponent is written through the pointer <VAR>expptr</VAR>.
+
+</P>
+<P>
+If <VAR>n_digits</VAR> is 0, the maximum number of digits meaningfully achievable
+from the precision of <VAR>op</VAR> will be generated.  Note that the space
+requirements for <VAR>str</VAR> in this case will be impossible for the user to
+predetermine.  Therefore, you need to pass NULL for the string argument
+whenever <VAR>n_digits</VAR> is 0.
+
+</P>
+<P>
+The generated string is a fraction, with an implicit radix point immediately
+to the left of the first digit.  For example, the number 3.1416 would be
+returned as "31416" in the string and 1 written at <VAR>expptr</VAR>.
+</DL>
+
+</P>
+
+
+
+<H2><A NAME="SEC35" HREF="gmp.html#TOC35">Arithmetic Functions</A></H2>
+<P>
+<A NAME="IDX165"></A>
+<A NAME="IDX166"></A>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpf_add</B> <I>(mpf_t <VAR>rop</VAR>, mpf_t <VAR>op1</VAR>, mpf_t <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX167"></A>
+<DT><U>Function:</U> void <B>mpf_add_ui</B> <I>(mpf_t <VAR>rop</VAR>, mpf_t <VAR>op1</VAR>, unsigned long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX168"></A>
+Set <VAR>rop</VAR> to <VAR>op1</VAR> + <VAR>op2</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpf_sub</B> <I>(mpf_t <VAR>rop</VAR>, mpf_t <VAR>op1</VAR>, mpf_t <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX169"></A>
+<DT><U>Function:</U> void <B>mpf_ui_sub</B> <I>(mpf_t <VAR>rop</VAR>, unsigned long int <VAR>op1</VAR>, mpf_t <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX170"></A>
+<DT><U>Function:</U> void <B>mpf_sub_ui</B> <I>(mpf_t <VAR>rop</VAR>, mpf_t <VAR>op1</VAR>, unsigned long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX171"></A>
+Set <VAR>rop</VAR> to <VAR>op1</VAR> - <VAR>op2</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpf_mul</B> <I>(mpf_t <VAR>rop</VAR>, mpf_t <VAR>op1</VAR>, mpf_t <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX172"></A>
+<DT><U>Function:</U> void <B>mpf_mul_ui</B> <I>(mpf_t <VAR>rop</VAR>, mpf_t <VAR>op1</VAR>, unsigned long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX173"></A>
+Set <VAR>rop</VAR> to <VAR>op1</VAR> times <VAR>op2</VAR>.
+</DL>
+
+</P>
+<P>
+Division is undefined if the divisor is zero, and passing a zero divisor to
+the divide functions will make these functions intentionally divide by zero.
+This gives the user the possibility to handle arithmetic exceptions in these
+functions in the same manner as other arithmetic exceptions.
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpf_div</B> <I>(mpf_t <VAR>rop</VAR>, mpf_t <VAR>op1</VAR>, mpf_t <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX174"></A>
+<DT><U>Function:</U> void <B>mpf_ui_div</B> <I>(mpf_t <VAR>rop</VAR>, unsigned long int <VAR>op1</VAR>, mpf_t <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX175"></A>
+<DT><U>Function:</U> void <B>mpf_div_ui</B> <I>(mpf_t <VAR>rop</VAR>, mpf_t <VAR>op1</VAR>, unsigned long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX176"></A>
+Set <VAR>rop</VAR> to <VAR>op1</VAR> / <VAR>op2</VAR>.
+rounded towards 0.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpf_sqrt</B> <I>(mpf_t <VAR>rop</VAR>, mpf_t <VAR>op</VAR>)</I>
+<DD><A NAME="IDX177"></A>
+<DT><U>Function:</U> void <B>mpf_sqrt_ui</B> <I>(mpf_t <VAR>rop</VAR>, unsigned long int <VAR>op</VAR>)</I>
+<DD><A NAME="IDX178"></A>
+Set <VAR>rop</VAR> to the square root of <VAR>op</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpf_pow_ui</B> <I>(mpf_t <VAR>rop</VAR>, mpf_t <VAR>op1</VAR>, unsigned long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX179"></A>
+Set <VAR>rop</VAR> to <VAR>op1</VAR> raised to <VAR>op2</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpf_neg</B> <I>(mpf_t <VAR>rop</VAR>, mpf_t <VAR>op</VAR>)</I>
+<DD><A NAME="IDX180"></A>
+Set <VAR>rop</VAR> to -<VAR>op</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpf_abs</B> <I>(mpf_t <VAR>rop</VAR>, mpf_t <VAR>op</VAR>)</I>
+<DD><A NAME="IDX181"></A>
+Set <VAR>rop</VAR> to the absolute value of <VAR>op</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpf_mul_2exp</B> <I>(mpf_t <VAR>rop</VAR>, mpf_t <VAR>op1</VAR>, unsigned long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX182"></A>
+Set <VAR>rop</VAR> to <VAR>op1</VAR> times 2 raised to <VAR>op2</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpf_div_2exp</B> <I>(mpf_t <VAR>rop</VAR>, mpf_t <VAR>op1</VAR>, unsigned long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX183"></A>
+Set <VAR>rop</VAR> to <VAR>op1</VAR> divided by 2 raised to <VAR>op2</VAR>.
+</DL>
+
+</P>
+
+
+<H2><A NAME="SEC36" HREF="gmp.html#TOC36">Comparison Functions</A></H2>
+<P>
+<A NAME="IDX184"></A>
+<A NAME="IDX185"></A>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> int <B>mpf_cmp</B> <I>(mpf_t <VAR>op1</VAR>, mpf_t <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX186"></A>
+<DT><U>Function:</U> int <B>mpf_cmp_ui</B> <I>(mpf_t <VAR>op1</VAR>, unsigned long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX187"></A>
+<DT><U>Function:</U> int <B>mpf_cmp_si</B> <I>(mpf_t <VAR>op1</VAR>, signed long int <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX188"></A>
+Compare <VAR>op1</VAR> and <VAR>op2</VAR>.  Return a positive value if <VAR>op1</VAR> &#62;
+<VAR>op2</VAR>, zero if <VAR>op1</VAR> = <VAR>op2</VAR>, and a negative value if <VAR>op1</VAR> &#60;
+<VAR>op2</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> int <B>mpf_eq</B> <I>(mpf_t <VAR>op1</VAR>, mpf_t <VAR>op2</VAR>, unsigned long int op3)</I>
+<DD><A NAME="IDX189"></A>
+Return non-zero if the first <VAR>op3</VAR> bits of <VAR>op1</VAR> and <VAR>op2</VAR> are
+equal, zero otherwise.  I.e., test of <VAR>op1</VAR> and <VAR>op2</VAR> are
+approximately equal.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpf_reldiff</B> <I>(mpf_t <VAR>rop</VAR>, mpf_t <VAR>op1</VAR>, mpf_t <VAR>op2</VAR>)</I>
+<DD><A NAME="IDX190"></A>
+Compute the relative difference between <VAR>op1</VAR> and <VAR>op2</VAR> and store the
+result in <VAR>rop</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> int <B>mpf_sgn</B> <I>(mpf_t <VAR>op</VAR>)</I>
+<DD><A NAME="IDX191"></A>
+Return +1 if <VAR>op</VAR> &#62; 0, 0 if <VAR>op</VAR> = 0, and -1 if <VAR>op</VAR> &#60; 0.
+</DL>
+
+</P>
+
+
+<H2><A NAME="SEC37" HREF="gmp.html#TOC37">Input and Output Functions</A></H2>
+<P>
+<A NAME="IDX192"></A>
+<A NAME="IDX193"></A>
+<A NAME="IDX194"></A>
+<A NAME="IDX195"></A>
+
+</P>
+<P>
+Functions that perform input from a stdio stream, and functions that output to
+a stdio stream.  Passing a NULL pointer for a <VAR>stream</VAR> argument to any of
+these functions will make them read from <CODE>stdin</CODE> and write to
+<CODE>stdout</CODE>, respectively.
+
+</P>
+<P>
+When using any of these functions, it is a good idea to include <TT>`stdio.h'</TT>
+before <TT>`gmp.h'</TT>, since that will allow <TT>`gmp.h'</TT> to define prototypes
+for these functions.
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> size_t <B>mpf_out_str</B> <I>(FILE *<VAR>stream</VAR>, int <VAR>base</VAR>, size_t <VAR>n_digits</VAR>, mpf_t <VAR>op</VAR>)</I>
+<DD><A NAME="IDX196"></A>
+Output <VAR>op</VAR> on stdio stream <VAR>stream</VAR>, as a string of digits in
+base <VAR>base</VAR>.  The base may vary from 2 to 36.  Print at most
+<VAR>n_digits</VAR> significant digits, or if <VAR>n_digits</VAR> is 0, the maximum
+number of digits accurately representable by <VAR>op</VAR>.
+
+</P>
+<P>
+In addition to the significant digits, a leading <SAMP>`0.'</SAMP> and a trailing
+exponent, in the form <SAMP>`@NNN'</SAMP>, are printed.
+
+</P>
+<P>
+Return the number of bytes written, or if an error occurred, return 0.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> size_t <B>mpf_inp_str</B> <I>(mpf_t <VAR>rop</VAR>, FILE *<VAR>stream</VAR>, int <VAR>base</VAR>)</I>
+<DD><A NAME="IDX197"></A>
+Input a string in base <VAR>base</VAR> from stdio stream <VAR>stream</VAR>, and put the
+read float in <VAR>rop</VAR>.  The string is of the form <SAMP>`M@N'</SAMP> or, if the
+base is 10 or less, alternatively <SAMP>`MeN'</SAMP>.  <SAMP>`M'</SAMP> is the mantissa and
+<SAMP>`N'</SAMP> is the exponent.  The mantissa is always in the specified base.  The
+exponent is either in the specified base or, if <VAR>base</VAR> is negative, in
+decimal.
+
+</P>
+<P>
+The argument <VAR>base</VAR> may be in the ranges 2 to 36, or -36 to
+-2.  Negative values are used to specify that the exponent is in
+decimal.
+
+</P>
+<P>
+Unlike the corresponding <CODE>mpz</CODE> function, the base will not be determined
+from the leading characters of the string if <VAR>base</VAR> is 0.  This is so that
+numbers like <SAMP>`0.23'</SAMP> are not interpreted as octal.
+
+</P>
+<P>
+Return the number of bytes read, or if an error occurred, return 0.
+</DL>
+
+</P>
+
+
+
+<H2><A NAME="SEC38" HREF="gmp.html#TOC38">Miscellaneous Functions</A></H2>
+<P>
+<A NAME="IDX198"></A>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpf_random2</B> <I>(mpf_t <VAR>rop</VAR>, mp_size_t <VAR>max_size</VAR>, mp_exp_t <VAR>max_exp</VAR>)</I>
+<DD><A NAME="IDX199"></A>
+Generate a random float of at most <VAR>max_size</VAR> limbs, with long strings of
+zeros and ones in the binary representation.  The exponent of the number is in
+the interval -<VAR>exp</VAR> to <VAR>exp</VAR>.  This function is useful for
+testing functions and algorithms, since this kind of random numbers have
+proven to be more likely to trigger corner-case bugs.  Negative random numbers
+are generated when <VAR>max_size</VAR> is negative.
+</DL>
+
+</P>
+
+
+
+<H1><A NAME="SEC39" HREF="gmp.html#TOC39">Low-level Functions</A></H1>
+<P>
+<A NAME="IDX200"></A>
+
+</P>
+<P>
+This chapter describes low-level MP functions, used to implement the high-level
+MP functions, but also intended for time-critical user code.
+
+</P>
+<P>
+These functions start with the prefix <CODE>mpn_</CODE>.
+
+</P>
+
+<P>
+The <CODE>mpn</CODE> functions are designed to be as fast as possible, <STRONG>not</STRONG>
+to provide a coherent calling interface.  The different functions have somewhat
+similar interfaces, but there are variations that make them hard to use.  These
+functions do as little as possible apart from the real multiple precision
+computation, so that no time is spent on things that not all callers need.
+
+</P>
+<P>
+A source operand is specified by a pointer to the least significant limb and a
+limb count.  A destination operand is specified by just a pointer.  It is the
+responsibility of the caller to ensure that the destination has enough space
+for storing the result.
+
+</P>
+<P>
+With this way of specifying operands, it is possible to perform computations
+on subranges of an argument, and store the result into a subrange of a
+destination.
+
+</P>
+<P>
+A common requirement for all functions is that each source area needs at least
+one limb.  No size argument may be zero.
+
+</P>
+<P>
+The <CODE>mpn</CODE> functions is the base for the implementation of the <CODE>mpz_</CODE>,
+<CODE>mpf_</CODE>, and <CODE>mpq_</CODE> functions.
+
+</P>
+<P>
+This example adds the number beginning at <VAR>src1_ptr</VAR> and the number
+beginning at <VAR>src2_ptr</VAR> and writes the sum at <VAR>dest_ptr</VAR>.  All areas
+have <VAR>size</VAR> limbs.
+
+</P>
+
+<PRE>
+cy = mpn_add_n (dest_ptr, src1_ptr, src2_ptr, size)
+</PRE>
+
+<P>
+In the notation used here, a source operand is identified by the pointer to
+the least significant limb, and the limb count in braces.  For example,
+{s1_ptr, s1_size}.
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> mp_limb_t <B>mpn_add_n</B> <I>(mp_limb_t * <VAR>dest_ptr</VAR>, const mp_limb_t * <VAR>src1_ptr</VAR>, const mp_limb_t * <VAR>src2_ptr</VAR>, mp_size_t <VAR>size</VAR>)</I>
+<DD><A NAME="IDX201"></A>
+Add {<VAR>src1_ptr</VAR>, <VAR>size</VAR>} and {<VAR>src2_ptr</VAR>, <VAR>size</VAR>}, and
+write the <VAR>size</VAR> least significant limbs of the result to <VAR>dest_ptr</VAR>.
+Return carry, either 0 or 1.
+
+</P>
+<P>
+This is the lowest-level function for addition.  It is the preferred function
+for addition, since it is written in assembly for most targets.  For addition
+of a variable to itself (i.e., <VAR>src1_ptr</VAR> equals <VAR>src2_ptr</VAR>, use
+<CODE>mpn_lshift</CODE> with a count of 1 for optimal speed.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> mp_limb_t <B>mpn_add_1</B> <I>(mp_limb_t * <VAR>dest_ptr</VAR>, const mp_limb_t * <VAR>src1_ptr</VAR>, mp_size_t <VAR>size</VAR>, mp_limb_t <VAR>src2_limb</VAR>)</I>
+<DD><A NAME="IDX202"></A>
+Add {<VAR>src1_ptr</VAR>, <VAR>size</VAR>} and <VAR>src2_limb</VAR>, and write the
+<VAR>size</VAR> least significant limbs of the result to <VAR>dest_ptr</VAR>.  Return
+carry, either 0 or 1.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> mp_limb_t <B>mpn_add</B> <I>(mp_limb_t * <VAR>dest_ptr</VAR>, const mp_limb_t * <VAR>src1_ptr</VAR>, mp_size_t <VAR>src1_size</VAR>, const mp_limb_t * <VAR>src2_ptr</VAR>, mp_size_t <VAR>src2_size</VAR>)</I>
+<DD><A NAME="IDX203"></A>
+Add {<VAR>src1_ptr</VAR>, <VAR>src1_size</VAR>} and {<VAR>src2_ptr</VAR>,
+<VAR>src2_size</VAR>}, and write the <VAR>src1_size</VAR> least significant limbs of
+the result to <VAR>dest_ptr</VAR>.  Return carry, either 0 or 1.
+
+</P>
+<P>
+This function requires that <VAR>src1_size</VAR> is greater than or equal to
+<VAR>src2_size</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> mp_limb_t <B>mpn_sub_n</B> <I>(mp_limb_t * <VAR>dest_ptr</VAR>, const mp_limb_t * <VAR>src1_ptr</VAR>, const mp_limb_t * <VAR>src2_ptr</VAR>, mp_size_t <VAR>size</VAR>)</I>
+<DD><A NAME="IDX204"></A>
+Subtract {<VAR>src2_ptr</VAR>, <VAR>src2_size</VAR>} from {<VAR>src1_ptr</VAR>,
+<VAR>size</VAR>}, and write the <VAR>size</VAR> least significant limbs of the result
+to <VAR>dest_ptr</VAR>.  Return borrow, either 0 or 1.
+
+</P>
+<P>
+This is the lowest-level function for subtraction.  It is the preferred
+function for subtraction, since it is written in assembly for most targets.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> mp_limb_t <B>mpn_sub_1</B> <I>(mp_limb_t * <VAR>dest_ptr</VAR>, const mp_limb_t * <VAR>src1_ptr</VAR>, mp_size_t <VAR>size</VAR>, mp_limb_t <VAR>src2_limb</VAR>)</I>
+<DD><A NAME="IDX205"></A>
+Subtract <VAR>src2_limb</VAR> from {<VAR>src1_ptr</VAR>, <VAR>size</VAR>}, and write the
+<VAR>size</VAR> least significant limbs of the result to <VAR>dest_ptr</VAR>.  Return
+borrow, either 0 or 1.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> mp_limb_t <B>mpn_sub</B> <I>(mp_limb_t * <VAR>dest_ptr</VAR>, const mp_limb_t * <VAR>src1_ptr</VAR>, mp_size_t <VAR>src1_size</VAR>, const mp_limb_t * <VAR>src2_ptr</VAR>, mp_size_t <VAR>src2_size</VAR>)</I>
+<DD><A NAME="IDX206"></A>
+Subtract {<VAR>src2_ptr</VAR>, <VAR>src2_size</VAR>} from {<VAR>src1_ptr</VAR>,
+<VAR>src1_size</VAR>}, and write the <VAR>src1_size</VAR> least significant limbs of
+the result to <VAR>dest_ptr</VAR>.  Return borrow, either 0 or 1.
+
+</P>
+<P>
+This function requires that <VAR>src1_size</VAR> is greater than or equal to
+<VAR>src2_size</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpn_mul_n</B> <I>(mp_limb_t * <VAR>dest_ptr</VAR>, const mp_limb_t * <VAR>src1_ptr</VAR>, const mp_limb_t * <VAR>src2_ptr</VAR>, mp_size_t <VAR>size</VAR>)</I>
+<DD><A NAME="IDX207"></A>
+Multiply {<VAR>src1_ptr</VAR>, <VAR>size</VAR>} and {<VAR>src2_ptr</VAR>, <VAR>size</VAR>},
+and write the <STRONG>entire</STRONG> result to <VAR>dest_ptr</VAR>.
+
+</P>
+<P>
+The destination has to have space for 2<VAR>size</VAR> limbs, even if the
+significant result might be one limb smaller.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> mp_limb_t <B>mpn_mul_1</B> <I>(mp_limb_t * <VAR>dest_ptr</VAR>, const mp_limb_t * <VAR>src1_ptr</VAR>, mp_size_t <VAR>size</VAR>, mp_limb_t <VAR>src2_limb</VAR>)</I>
+<DD><A NAME="IDX208"></A>
+Multiply {<VAR>src1_ptr</VAR>, <VAR>size</VAR>} and <VAR>src2_limb</VAR>, and write the
+<VAR>size</VAR> least significant limbs of the product to <VAR>dest_ptr</VAR>.  Return
+the most significant limb of the product.
+
+</P>
+<P>
+This is a low-level function that is a building block for general
+multiplication as well as other operations in MP.  It is written in assembly
+for most targets.
+
+</P>
+<P>
+Don't call this function if <VAR>src2_limb</VAR> is a power of 2; use
+<CODE>mpn_lshift</CODE> with a count equal to the logarithm of <VAR>src2_limb</VAR>
+instead, for optimal speed.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> mp_limb_t <B>mpn_addmul_1</B> <I>(mp_limb_t * <VAR>dest_ptr</VAR>, const mp_limb_t * <VAR>src1_ptr</VAR>, mp_size_t <VAR>size</VAR>, mp_limb_t <VAR>src2_limb</VAR>)</I>
+<DD><A NAME="IDX209"></A>
+Multiply {<VAR>src1_ptr</VAR>, <VAR>size</VAR>} and <VAR>src2_limb</VAR>, and add the
+<VAR>size</VAR> least significant limbs of the product to {<VAR>dest_ptr</VAR>,
+<VAR>size</VAR>} and write the result to <VAR>dest_ptr</VAR> <VAR>dest_ptr</VAR>.  Return
+the most significant limb of the product, plus carry-out from the addition.
+
+</P>
+<P>
+This is a low-level function that is a building block for general
+multiplication as well as other operations in MP.  It is written in assembly
+for most targets.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> mp_limb_t <B>mpn_submul_1</B> <I>(mp_limb_t * <VAR>dest_ptr</VAR>, const mp_limb_t * <VAR>src1_ptr</VAR>, mp_size_t <VAR>size</VAR>, mp_limb_t <VAR>src2_limb</VAR>)</I>
+<DD><A NAME="IDX210"></A>
+Multiply {<VAR>src1_ptr</VAR>, <VAR>size</VAR>} and <VAR>src2_limb</VAR>, and subtract the
+<VAR>size</VAR> least significant limbs of the product from {<VAR>dest_ptr</VAR>,
+<VAR>size</VAR>} and write the result to <VAR>dest_ptr</VAR>.  Return the most
+significant limb of the product, minus borrow-out from the subtraction.
+
+</P>
+<P>
+This is a low-level function that is a building block for general
+multiplication and division as well as other operations in MP.  It is written
+in assembly for most targets.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> mp_limb_t <B>mpn_mul</B> <I>(mp_limb_t * <VAR>dest_ptr</VAR>, const mp_limb_t * <VAR>src1_ptr</VAR>, mp_size_t <VAR>src1_size</VAR>, const mp_limb_t * <VAR>src2_ptr</VAR>, mp_size_t <VAR>src2_size</VAR>)</I>
+<DD><A NAME="IDX211"></A>
+Multiply {<VAR>src1_ptr</VAR>, <VAR>src1_size</VAR>} and {<VAR>src2_ptr</VAR>,
+<VAR>src2_size</VAR>}, and write the result to <VAR>dest_ptr</VAR>.  Return the most
+significant limb of the result.
+
+</P>
+<P>
+The destination has to have space for <VAR>src1_size</VAR> + <VAR>src1_size</VAR>
+limbs, even if the result might be one limb smaller.
+
+</P>
+<P>
+This function requires that <VAR>src1_size</VAR> is greater than or equal to
+<VAR>src2_size</VAR>.  The destination must be distinct from either input operands.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> mp_size_t <B>mpn_divrem</B> <I>(mp_limb_t * <VAR>r1p</VAR>, mp_size_t <VAR>xsize</VAR>, mp_limb_t * <VAR>rs2p</VAR>, mp_size_t <VAR>rs2size</VAR>, const mp_limb_t * <VAR>s3p</VAR>, mp_size_t <VAR>s3size</VAR>)</I>
+<DD><A NAME="IDX212"></A>
+Divide {<VAR>rs2p</VAR>, <VAR>rs2size</VAR>} by {<VAR>s3p</VAR>, <VAR>s3size</VAR>}, and
+write the quotient at <VAR>r1p</VAR>, with the exception of the most significant
+limb, which is returned.  The remainder replaces the dividend at <VAR>rs2p</VAR>.
+
+</P>
+<P>
+In addition to an integer quotient, <VAR>xsize</VAR> fraction limbs are developed,
+and stored after the integral limbs.  For most usages, <VAR>xsize</VAR> will be
+zero.
+
+</P>
+<P>
+It is required that <VAR>rs2size</VAR> is greater than or equal to <VAR>s3size</VAR>.
+It is required that the most significant bit of the divisor is set.
+
+</P>
+<P>
+If the quotient is not needed, pass <VAR>rs2p</VAR> + <VAR>s3size</VAR> as <VAR>r1p</VAR>.
+Aside from that special case, no overlap between arguments is permitted.
+
+</P>
+<P>
+Return the most significant limb of the quotient, either 0 or 1.
+
+</P>
+<P>
+The area at <VAR>r1p</VAR> needs to be <VAR>rs2size</VAR> - <VAR>s3size</VAR> +
+<VAR>xsize</VAR> limbs large.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> mp_limb_t <B>mpn_divrem_1</B> <I>(mp_limb_t * <VAR>r1p</VAR>, mp_size_t <VAR>xsize</VAR>, mp_limb_t * <VAR>s2p</VAR>, mp_size_t <VAR>s2size</VAR>, mp_limb_t <VAR>s3limb</VAR>)</I>
+<DD><A NAME="IDX213"></A>
+Divide {<VAR>s2p</VAR>, <VAR>s2size</VAR>} by <VAR>s3limb</VAR>, and write the quotient
+at <VAR>r1p</VAR>.  Return the remainder.
+
+</P>
+<P>
+In addition to an integer quotient, <VAR>xsize</VAR> fraction limbs are developed,
+and stored after the integral limbs.  For most usages, <VAR>xsize</VAR> will be
+zero.
+
+</P>
+<P>
+The areas at <VAR>r1p</VAR> and <VAR>s2p</VAR> have to be identical or completely
+separate, not partially overlapping.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> mp_size_t <B>mpn_divmod</B> <I>(mp_limb_t * <VAR>r1p</VAR>, mp_limb_t * <VAR>rs2p</VAR>, mp_size_t <VAR>rs2size</VAR>, const mp_limb_t * <VAR>s3p</VAR>, mp_size_t <VAR>s3size</VAR>)</I>
+<DD><A NAME="IDX214"></A>
+<STRONG>This interface is obsolete.  It will disappear from future releases.
+Use <CODE>mpn_divrem</CODE> in its stead.</STRONG>
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> mp_limb_t <B>mpn_divmod_1</B> <I>(mp_limb_t * <VAR>r1p</VAR>, mp_limb_t * <VAR>s2p</VAR>, mp_size_t <VAR>s2size</VAR>, mp_limb_t <VAR>s3limb</VAR>)</I>
+<DD><A NAME="IDX215"></A>
+<STRONG>This interface is obsolete.  It will disappear from future releases.
+Use <CODE>mpn_divrem_1</CODE> in its stead.</STRONG>
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> mp_limb_t <B>mpn_mod_1</B> <I>(mp_limb_t * <VAR>s1p</VAR>, mp_size_t <VAR>s1size</VAR>, mp_limb_t <VAR>s2limb</VAR>)</I>
+<DD><A NAME="IDX216"></A>
+Divide {<VAR>s1p</VAR>, <VAR>s1size</VAR>} by <VAR>s2limb</VAR>, and return the remainder.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> mp_limb_t <B>mpn_pre_mod_1</B> <I>(mp_limb_t * <VAR>s1p</VAR>, mp_size_t <VAR>s1size</VAR>, mp_limb_t <VAR>s2limb</VAR>, mp_limb_t <VAR>s3limb</VAR>)</I>
+<DD><A NAME="IDX217"></A>
+<STRONG>This interface is obsolete.  It will disappear from future releases.
+Use <CODE>mpn_mod_1</CODE> in its stead.</STRONG>
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> mp_limb_t <B>mpn_bdivmod</B> <I>(mp_limb_t * <VAR>dest_ptr</VAR>, mp_limb_t * <VAR>s1p</VAR>, mp_size_t <VAR>s1size</VAR>, const mp_limb_t * <VAR>s2p</VAR>, mp_size_t <VAR>s2size</VAR>, unsigned long int <VAR>d</VAR>)</I>
+<DD><A NAME="IDX218"></A>
+The function puts the low [<VAR>d</VAR> / <VAR>BITS_PER_MP_LIMB</VAR>] limbs of
+<VAR>q</VAR> =
+{<VAR>s1p</VAR>, <VAR>s1size</VAR>} / {<VAR>s2p</VAR>, <VAR>s2size</VAR>}
+mod 2^<VAR>d</VAR>
+at <VAR>dest_ptr</VAR>,
+and returns the high <VAR>d</VAR> mod <VAR>BITS_PER_MP_LIMB</VAR> bits of <VAR>q</VAR>.
+
+</P>
+<P>
+{<VAR>s1p</VAR>, <VAR>s1size</VAR>} - <VAR>q</VAR> * {<VAR>s2p</VAR>, <VAR>s2size</VAR>}
+mod 2^(<VAR>s1size</VAR>*<VAR>BITS_PER_MP_LIMB</VAR>)
+is placed at <VAR>s1p</VAR>.
+Since the low [<VAR>d</VAR> / <VAR>BITS_PER_MP_LIMB</VAR>] limbs of
+this difference are zero, it is possible to overwrite the low limbs at
+<VAR>s1p</VAR> with this difference,
+provided <VAR>dest_ptr</VAR> &#60;= <VAR>s1p</VAR>.
+
+</P>
+<P>
+This function requires that <VAR>s1size</VAR> * <VAR>BITS_PER_MP_LIMB</VAR> &#62;= <VAR>D</VAR>,
+and that {<VAR>s2p</VAR>, <VAR>s2size</VAR>} is odd.
+
+</P>
+<P>
+<STRONG>This interface is preliminary.  It might change incompatibly in
+future revisions.</STRONG>
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> mp_limb_t <B>mpn_lshift</B> <I>(mp_limb_t * <VAR>dest_ptr</VAR>, const mp_limb_t * <VAR>src_ptr</VAR>, mp_size_t <VAR>src_size</VAR>, unsigned long int <VAR>count</VAR>)</I>
+<DD><A NAME="IDX219"></A>
+Shift {<VAR>src_ptr</VAR>, <VAR>src_size</VAR>} <VAR>count</VAR> bits to the left, and
+write the <VAR>src_size</VAR> least significant limbs of the result to
+<VAR>dest_ptr</VAR>.  <VAR>count</VAR> might be in the range 1 to n - 1, on an
+n-bit machine. The bits shifted out to the left are returned.
+
+</P>
+<P>
+Overlapping of the destination space and the source space is allowed in this
+function, provided <VAR>dest_ptr</VAR> &#62;= <VAR>src_ptr</VAR>.
+
+</P>
+<P>
+This function is written in assembly for most targets.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> mp_limp_t <B>mpn_rshift</B> <I>(mp_limb_t * <VAR>dest_ptr</VAR>, const mp_limb_t * <VAR>src_ptr</VAR>, mp_size_t <VAR>src_size</VAR>, unsigned long int <VAR>count</VAR>)</I>
+<DD><A NAME="IDX220"></A>
+Shift {<VAR>src_ptr</VAR>, <VAR>src_size</VAR>} <VAR>count</VAR> bits to the right, and
+write the <VAR>src_size</VAR> most significant limbs of the result to
+<VAR>dest_ptr</VAR>.  <VAR>count</VAR> might be in the range 1 to n - 1, on an
+n-bit machine.  The bits shifted out to the right are returned.
+
+</P>
+<P>
+Overlapping of the destination space and the source space is allowed in this
+function, provided <VAR>dest_ptr</VAR> &#60;= <VAR>src_ptr</VAR>.
+
+</P>
+<P>
+This function is written in assembly for most targets.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> int <B>mpn_cmp</B> <I>(const mp_limb_t * <VAR>src1_ptr</VAR>, const mp_limb_t * <VAR>src2_ptr</VAR>, mp_size_t <VAR>size</VAR>)</I>
+<DD><A NAME="IDX221"></A>
+Compare {<VAR>src1_ptr</VAR>, <VAR>size</VAR>} and {<VAR>src2_ptr</VAR>, <VAR>size</VAR>} and
+return a positive value if src1 &#62; src2, 0 of they are equal, and a negative
+value if src1 &#60; src2.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> mp_size_t <B>mpn_gcd</B> <I>(mp_limb_t * <VAR>dest_ptr</VAR>, mp_limb_t * <VAR>src1_ptr</VAR>, mp_size_t <VAR>src1_size</VAR>, mp_limb_t * <VAR>src2_ptr</VAR>, mp_size_t <VAR>src2_size</VAR>)</I>
+<DD><A NAME="IDX222"></A>
+Puts at <VAR>dest_ptr</VAR> the greatest common divisor of {<VAR>src1_ptr</VAR>,
+<VAR>src1_size</VAR>} and {<VAR>src2_ptr</VAR>, <VAR>src2_size</VAR>}; both source
+operands are destroyed by the operation.  The size in limbs of the greatest
+common divisor is returned.
+
+</P>
+<P>
+{<VAR>src1_ptr</VAR>, <VAR>src1_size</VAR>} must be odd, and {<VAR>src2_ptr</VAR>,
+<VAR>src2_size</VAR>} must have at least as many bits as {<VAR>src1_ptr</VAR>,
+<VAR>src1_size</VAR>}.
+
+</P>
+<P>
+<STRONG>This interface is preliminary.  It might change incompatibly in
+future revisions.</STRONG>
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> mp_limb_t <B>mpn_gcd_1</B> <I>(const mp_limb_t * <VAR>src1_ptr</VAR>, mp_size_t <VAR>src1_size</VAR>, mp_limb_t <VAR>src2_limb</VAR>)</I>
+<DD><A NAME="IDX223"></A>
+Return the greatest common divisor of {<VAR>src1_ptr</VAR>, <VAR>src1_size</VAR>}
+and <VAR>src2_limb</VAR>, where <VAR>src2_limb</VAR> (as well as <VAR>src1_size</VAR>)
+must be different from 0.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> mp_size_t <B>mpn_gcdext</B> <I>(mp_limb_t * <VAR>r1p</VAR>, mp_limb_t * <VAR>r2p</VAR>, mp_limb_t * <VAR>s1p</VAR>, mp_size_t <VAR>s1size</VAR>, mp_limb_t * <VAR>s2p</VAR>, mp_size_t <VAR>s2size</VAR>)</I>
+<DD><A NAME="IDX224"></A>
+Puts at <VAR>r1p</VAR> the greatest common divisor of {<VAR>s1p</VAR>, <VAR>s1size</VAR>}
+and {<VAR>s2p</VAR>, <VAR>s2size</VAR>}.  The first cofactor is written at
+<VAR>r2p</VAR>.  Both source operands are destroyed by the operation.  The size
+in limbs of the greatest common divisor is returned.
+
+</P>
+<P>
+<STRONG>This interface is preliminary.  It might change incompatibly in
+future revisions.</STRONG>
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> mp_size_t <B>mpn_sqrtrem</B> <I>(mp_limb_t * <VAR>r1p</VAR>, mp_limb_t * <VAR>r2p</VAR>, const mp_limb_t * <VAR>sp</VAR>, mp_size_t <VAR>size</VAR>)</I>
+<DD><A NAME="IDX225"></A>
+Compute the square root of {<VAR>sp</VAR>, <VAR>size</VAR>} and put the result at
+<VAR>r1p</VAR>.  Write the remainder at <VAR>r2p</VAR>, unless <VAR>r2p</VAR> is NULL.
+
+</P>
+<P>
+Return the size of the remainder, whether <VAR>r2p</VAR> was NULL or non-NULL.
+Iff the operand was a perfect square, the return value will be 0.
+
+</P>
+<P>
+The areas at <VAR>r1p</VAR> and <VAR>sp</VAR> have to be distinct.  The areas at
+<VAR>r2p</VAR> and <VAR>sp</VAR> have to be identical or completely separate, not
+partially overlapping.
+
+</P>
+<P>
+The area at <VAR>r1p</VAR> needs to be <VAR>size</VAR> / 2 limbs large.
+The area at <VAR>r2p</VAR> needs to be <VAR>size</VAR> limbs large.
+
+</P>
+<P>
+<STRONG>This interface is preliminary.  It might change incompatibly in
+future revisions.</STRONG>
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> mp_size_t <B>mpn_get_str</B> <I>(unsigned char *<VAR>str</VAR>, int <VAR>base</VAR>, mp_limb_t * <VAR>s1p</VAR>, mp_size_t <VAR>s1size</VAR>)</I>
+<DD><A NAME="IDX226"></A>
+Convert {<VAR>s1p</VAR>, <VAR>s1size</VAR>} to a raw unsigned char array in base
+<VAR>base</VAR>.  The string is not in ASCII; to convert it to printable format,
+add the ASCII codes for <SAMP>`0'</SAMP> or <SAMP>`A'</SAMP>, depending on the base and
+range.  There may be leading zeros in the string.
+
+</P>
+<P>
+The area at <VAR>s1p</VAR> is clobbered.
+
+</P>
+<P>
+Return the number of characters in <VAR>str</VAR>.
+
+</P>
+<P>
+The area at <VAR>str</VAR> has to have space for the largest possible number
+represented by a <VAR>s1size</VAR> long limb array, plus one extra character.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> mp_size_t <B>mpn_set_str</B> <I>(mp_limb_t * <VAR>r1p</VAR>, const char *<VAR>str</VAR>, size_t {strsize}, int <VAR>base</VAR>)</I>
+<DD><A NAME="IDX227"></A>
+Convert the raw unsigned char array at <VAR>str</VAR> of length <VAR>strsize</VAR> to
+a limb array {<VAR>s1p</VAR>, <VAR>s1size</VAR>}.  The base of <VAR>str</VAR> is
+<VAR>base</VAR>.
+
+</P>
+<P>
+Return the number of limbs stored in <VAR>r1p</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> unsigned long int <B>mpn_scan0</B> <I>(const mp_limb_t * <VAR>s1p</VAR>, unsigned long int <VAR>bit</VAR>)</I>
+<DD><A NAME="IDX228"></A>
+Scan <VAR>s1p</VAR> from bit position <VAR>bit</VAR> for the next clear bit.
+
+</P>
+<P>
+It is required that there be a clear bit within the area at <VAR>s1p</VAR> at or
+beyond bit position <VAR>bit</VAR>, so that the function has something to return.
+
+</P>
+<P>
+<STRONG>This interface is preliminary.  It might change incompatibly in
+future revisions.</STRONG>
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> unsigned long int <B>mpn_scan1</B> <I>(const mp_limb_t * <VAR>s1p</VAR>, unsigned long int <VAR>bit</VAR>)</I>
+<DD><A NAME="IDX229"></A>
+Scan <VAR>s1p</VAR> from bit position <VAR>bit</VAR> for the next set bit.
+
+</P>
+<P>
+It is required that there be a set bit within the area at <VAR>s1p</VAR> at or
+beyond bit position <VAR>bit</VAR>, so that the function has something to return.
+
+</P>
+<P>
+<STRONG>This interface is preliminary.  It might change incompatibly in
+future revisions.</STRONG>
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mpn_random2</B> <I>(mp_limb_t * <VAR>r1p</VAR>, mp_size_t <VAR>r1size</VAR>)</I>
+<DD><A NAME="IDX230"></A>
+Generate a random number of length <VAR>r1size</VAR> with long strings of zeros
+and ones in the binary representation, and store it at <VAR>r1p</VAR>.
+
+</P>
+<P>
+The generated random numbers are intended for testing the correctness of the
+implementation of the <CODE>mpn</CODE> routines.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> unsigned long int <B>mpn_popcount</B> <I>(const mp_limb_t * <VAR>s1p</VAR>, unsigned long int <VAR>size</VAR>)</I>
+<DD><A NAME="IDX231"></A>
+Count the number of set bits in {<VAR>s1p</VAR>, <VAR>size</VAR>}.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> unsigned long int <B>mpn_hamdist</B> <I>(const mp_limb_t * <VAR>s1p</VAR>, const mp_limb_t * <VAR>s2p</VAR>, unsigned long int <VAR>size</VAR>)</I>
+<DD><A NAME="IDX232"></A>
+Compute the hamming distance between {<VAR>s1p</VAR>, <VAR>size</VAR>} and
+{<VAR>s2p</VAR>, <VAR>size</VAR>}.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> int <B>mpn_perfect_square_p</B> <I>(const mp_limb_t * <VAR>s1p</VAR>, mp_size_t <VAR>size</VAR>)</I>
+<DD><A NAME="IDX233"></A>
+Return non-zero iff {<VAR>s1p</VAR>, <VAR>size</VAR>} is a perfect square.
+</DL>
+
+</P>
+
+
+
+<H1><A NAME="SEC40" HREF="gmp.html#TOC40">Berkeley MP Compatible Functions</A></H1>
+<P>
+<A NAME="IDX234"></A>
+
+</P>
+<P>
+These functions are intended to be fully compatible with the Berkeley MP
+library which is available on many BSD derived U*ix systems.
+
+</P>
+<P>
+The original Berkeley MP library has a usage restriction: you cannot use the
+same variable as both source and destination in a single function call.  The
+compatible functions in GNU MP do not share this restriction--inputs and
+outputs may overlap.
+
+</P>
+<P>
+It is not recommended that new programs are written using these functions.
+Apart from the incomplete set of functions, the interface for initializing
+<CODE>MINT</CODE> objects is more error prone, and the <CODE>pow</CODE> function collides
+with <CODE>pow</CODE> in <TT>`libm.a'</TT>.
+
+</P>
+<P>
+<A NAME="IDX235"></A>
+Include the header <TT>`mp.h'</TT> to get the definition of the necessary types
+and functions.  If you are on a BSD derived system, make sure to include GNU
+<TT>`mp.h'</TT> if you are going to link the GNU <TT>`libmp.a'</TT> to you program.
+This means that you probably need to give the -I&#60;dir&#62; option to the compiler,
+where &#60;dir&#62; is the directory where you have GNU <TT>`mp.h'</TT>.
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> MINT * <B>itom</B> <I>(signed short int <VAR>initial_value</VAR>)</I>
+<DD><A NAME="IDX236"></A>
+Allocate an integer consisting of a <CODE>MINT</CODE> object and dynamic limb space.
+Initialize the integer to <VAR>initial_value</VAR>.  Return a pointer to the
+<CODE>MINT</CODE> object.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> MINT * <B>xtom</B> <I>(char *<VAR>initial_value</VAR>)</I>
+<DD><A NAME="IDX237"></A>
+Allocate an integer consisting of a <CODE>MINT</CODE> object and dynamic limb space.
+Initialize the integer from <VAR>initial_value</VAR>, a hexadecimal, '\0'-terminate
+C string.  Return a pointer to the <CODE>MINT</CODE> object.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>move</B> <I>(MINT *<VAR>src</VAR>, MINT *<VAR>dest</VAR>)</I>
+<DD><A NAME="IDX238"></A>
+Set <VAR>dest</VAR> to <VAR>src</VAR> by copying.  Both variables must be previously
+initialized.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>madd</B> <I>(MINT *<VAR>src_1</VAR>, MINT *<VAR>src_2</VAR>, MINT *<VAR>destination</VAR>)</I>
+<DD><A NAME="IDX239"></A>
+Add <VAR>src_1</VAR> and <VAR>src_2</VAR> and put the sum in <VAR>destination</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>msub</B> <I>(MINT *<VAR>src_1</VAR>, MINT *<VAR>src_2</VAR>, MINT *<VAR>destination</VAR>)</I>
+<DD><A NAME="IDX240"></A>
+Subtract <VAR>src_2</VAR> from <VAR>src_1</VAR> and put the difference in
+<VAR>destination</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mult</B> <I>(MINT *<VAR>src_1</VAR>, MINT *<VAR>src_2</VAR>, MINT *<VAR>destination</VAR>)</I>
+<DD><A NAME="IDX241"></A>
+Multiply <VAR>src_1</VAR> and <VAR>src_2</VAR> and put the product in
+<VAR>destination</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mdiv</B> <I>(MINT *<VAR>dividend</VAR>, MINT *<VAR>divisor</VAR>, MINT *<VAR>quotient</VAR>, MINT *<VAR>remainder</VAR>)</I>
+<DD><A NAME="IDX242"></A>
+<DT><U>Function:</U> void <B>sdiv</B> <I>(MINT *<VAR>dividend</VAR>, signed short int <VAR>divisor</VAR>, MINT *<VAR>quotient</VAR>, signed short int *<VAR>remainder</VAR>)</I>
+<DD><A NAME="IDX243"></A>
+Set <VAR>quotient</VAR> to <VAR>dividend</VAR> / <VAR>divisor</VAR>, and <VAR>remainder</VAR> to
+<VAR>dividend</VAR> mod <VAR>divisor</VAR>.  The quotient is rounded towards zero; the
+remainder has the same sign as the dividend unless it is zero.
+
+</P>
+<P>
+Some implementations of these functions work differently--or not at all--for
+negative arguments.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>msqrt</B> <I>(MINT *<VAR>operand</VAR>, MINT *<VAR>root</VAR>, MINT *<VAR>remainder</VAR>)</I>
+<DD><A NAME="IDX244"></A>
+Set <VAR>root</VAR> to
+like <CODE>mpz_sqrt</CODE>.  Set <VAR>remainder</VAR> to
+(i.e., zero if <VAR>operand</VAR> is a perfect square).
+
+</P>
+<P>
+If <VAR>root</VAR> and <VAR>remainder</VAR> are the same variable, the results are
+undefined.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>pow</B> <I>(MINT *<VAR>base</VAR>, MINT *<VAR>exp</VAR>, MINT *<VAR>mod</VAR>, MINT *<VAR>dest</VAR>)</I>
+<DD><A NAME="IDX245"></A>
+Set <VAR>dest</VAR> to (<VAR>base</VAR> raised to <VAR>exp</VAR>) modulo <VAR>mod</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>rpow</B> <I>(MINT *<VAR>base</VAR>, signed short int <VAR>exp</VAR>, MINT *<VAR>dest</VAR>)</I>
+<DD><A NAME="IDX246"></A>
+Set <VAR>dest</VAR> to <VAR>base</VAR> raised to <VAR>exp</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>gcd</B> <I>(MINT *<VAR>operand1</VAR>, MINT *<VAR>operand2</VAR>, MINT *<VAR>res</VAR>)</I>
+<DD><A NAME="IDX247"></A>
+Set <VAR>res</VAR> to the greatest common divisor of <VAR>operand1</VAR> and
+<VAR>operand2</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> int <B>mcmp</B> <I>(MINT *<VAR>operand1</VAR>, MINT *<VAR>operand2</VAR>)</I>
+<DD><A NAME="IDX248"></A>
+Compare <VAR>operand1</VAR> and <VAR>operand2</VAR>.  Return a positive value if
+<VAR>operand1</VAR> &#62; <VAR>operand2</VAR>, zero if <VAR>operand1</VAR> =
+<VAR>operand2</VAR>, and a negative value if <VAR>operand1</VAR> &#60; <VAR>operand2</VAR>.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>min</B> <I>(MINT *<VAR>dest</VAR>)</I>
+<DD><A NAME="IDX249"></A>
+Input a decimal string from <CODE>stdin</CODE>, and put the read integer in
+<VAR>dest</VAR>.  SPC and TAB are allowed in the number string, and are ignored.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mout</B> <I>(MINT *<VAR>src</VAR>)</I>
+<DD><A NAME="IDX250"></A>
+Output <VAR>src</VAR> to <CODE>stdout</CODE>, as a decimal string.  Also output a newline.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> char * <B>mtox</B> <I>(MINT *<VAR>operand</VAR>)</I>
+<DD><A NAME="IDX251"></A>
+Convert <VAR>operand</VAR> to a hexadecimal string, and return a pointer to the
+string.  The returned string is allocated using the default memory allocation
+function, <CODE>malloc</CODE> by default.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mfree</B> <I>(MINT *<VAR>operand</VAR>)</I>
+<DD><A NAME="IDX252"></A>
+De-allocate, the space used by <VAR>operand</VAR>.  <STRONG>This function should
+only be passed a value returned by <CODE>itom</CODE> or <CODE>xtom</CODE>.</STRONG>
+</DL>
+
+</P>
+
+
+<H1><A NAME="SEC41" HREF="gmp.html#TOC41">Custom Allocation</A></H1>
+
+<P>
+By default, the MP functions use <CODE>malloc</CODE>, <CODE>realloc</CODE>, and
+<CODE>free</CODE> for memory allocation.  If <CODE>malloc</CODE> or <CODE>realloc</CODE> fails,
+the MP library terminates execution after printing a fatal error message to
+standard error.
+
+</P>
+<P>
+For some applications, you may wish to allocate memory in other ways, or you
+may not want to have a fatal error when there is no more memory available.  To
+accomplish this, you can specify alternative memory allocation functions.
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>mp_set_memory_functions</B> <I>(<BR> void *(*<VAR>alloc_func_ptr</VAR>) (size_t), <BR> void *(*<VAR>realloc_func_ptr</VAR>) (void *, size_t, size_t), <BR> void (*<VAR>free_func_ptr</VAR>) (void *, size_t))</I>
+<DD><A NAME="IDX253"></A>
+Replace the current allocation functions from the arguments.  If an argument
+is NULL, the corresponding default function is retained.
+
+</P>
+<P>
+<STRONG>Make sure to call this function in such a way that there are no active
+MP objects that were allocated using the previously active allocation
+function!  Usually, that means that you have to call this function before any
+other MP function.</STRONG>
+</DL>
+
+</P>
+<P>
+The functions you supply should fit the following declarations:
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void * <B>allocate_function</B> <I>(size_t <VAR>alloc_size</VAR>)</I>
+<DD><A NAME="IDX254"></A>
+This function should return a pointer to newly allocated space with at least
+<VAR>alloc_size</VAR> storage units.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void * <B>reallocate_function</B> <I>(void *<VAR>ptr</VAR>, size_t <VAR>old_size</VAR>, size_t <VAR>new_size</VAR>)</I>
+<DD><A NAME="IDX255"></A>
+This function should return a pointer to newly allocated space of at least
+<VAR>new_size</VAR> storage units, after copying at least the first <VAR>old_size</VAR>
+storage units from <VAR>ptr</VAR>.  It should also de-allocate the space at
+<VAR>ptr</VAR>.
+
+</P>
+<P>
+You can assume that the space at <VAR>ptr</VAR> was formerly returned from
+<CODE>allocate_function</CODE> or <CODE>reallocate_function</CODE>, for a request for
+<VAR>old_size</VAR> storage units.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> void <B>deallocate_function</B> <I>(void *<VAR>ptr</VAR>, size_t <VAR>size</VAR>)</I>
+<DD><A NAME="IDX256"></A>
+De-allocate the space pointed to by <VAR>ptr</VAR>.
+
+</P>
+<P>
+You can assume that the space at <VAR>ptr</VAR> was formerly returned from
+<CODE>allocate_function</CODE> or <CODE>reallocate_function</CODE>, for a request for
+<VAR>size</VAR> storage units.
+</DL>
+
+</P>
+<P>
+(A <EM>storage unit</EM> is the unit in which the <CODE>sizeof</CODE> operator returns
+the size of an object, normally an 8 bit byte.)
+
+</P>
+
+
+
+<H1><A NAME="SEC42" HREF="gmp.html#TOC42">Contributors</A></H1>
+
+<P>
+I would like to thank Gunnar Sjoedin and Hans Riesel for their help with
+mathematical problems, Richard Stallman for his help with design issues and
+for revising the first version of this manual, Brian Beuning and Doug Lea for
+their testing of early versions of the library.
+
+</P>
+<P>
+John Amanatides of York University in Canada contributed the function
+<CODE>mpz_probab_prime_p</CODE>.
+
+</P>
+<P>
+Ken Weber (Kent State University, Universidade Federal do Rio Grande do Sul)
+contributed <CODE>mpz_gcd</CODE>, <CODE>mpz_divexact</CODE>, <CODE>mpn_gcd</CODE>, and
+<CODE>mpn_bdivmod</CODE>, partially supported by CNPq (Brazil) grant 301314194-2.
+
+</P>
+<P>
+Per Bothner of Cygnus Support helped to set up MP to use Cygnus' configure.
+He has also made valuable suggestions and tested numerous intermediary
+releases.
+
+</P>
+<P>
+Joachim Hollman was involved in the design of the <CODE>mpf</CODE> interface, and in
+the <CODE>mpz</CODE> design revisions for version 2.
+
+</P>
+<P>
+Bennet Yee contributed the functions <CODE>mpz_jacobi</CODE> and
+<CODE>mpz_legendre</CODE>.
+
+</P>
+<P>
+Andreas Schwab contributed the files <CODE>m68k/lshift.S</CODE> and
+<CODE>m68k/rshift.S</CODE>.
+
+</P>
+<P>
+The development of floating point functions of GNU MP 2, were supported in
+part by the ESPRIT-BRA (Basic Research Activities) 6846 project POSSO
+(POlynomial System SOlving).
+
+</P>
+<P>
+GNU MP 2 was finished and released by TMG Datakonsult, Sodermannagatan 5, 116
+23 STOCKHOLM, SWEDEN, in cooperation with the IDA Center for Computing
+Sciences, USA.
+
+</P>
+
+
+
+<H1><A NAME="SEC43" HREF="gmp.html#TOC43">References</A></H1>
+
+
+<UL>
+
+<LI>
+
+Donald E. Knuth, "The Art of Computer Programming", vol 2,
+"Seminumerical Algorithms", 2nd edition, Addison-Wesley, 1981.
+
+<LI>
+
+John D. Lipson, "Elements of Algebra and Algebraic Computing",
+The Benjamin Cummings Publishing Company Inc, 1981.
+
+<LI>
+
+Richard M. Stallman, "Using and Porting GCC", Free Software Foundation,
+1995.
+
+<LI>
+
+Peter L. Montgomery, "Modular Multiplication Without Trial Division", in
+Mathematics of Computation, volume 44, number 170, April 1985.
+
+<LI>
+
+Torbjorn Granlund and Peter L. Montgomery, "Division by Invariant
+Integers using Multiplication", in Proceedings of the SIGPLAN
+PLDI'94 Conference, June 1994.
+
+<LI>
+
+Tudor Jebelean,
+"An algorithm for exact division",
+Journal of Symbolic Computation,
+v. 15, 1993, pp. 169-180.
+
+<LI>
+
+Kenneth Weber, "The accelerated integer GCD algorithm",
+ACM Transactions on Mathematical Software,
+v. 21 (March), 1995, pp. 111-122.
+</UL>
+
+
+
+<H1><A NAME="SEC44" HREF="gmp.html#TOC44">Concept Index</A></H1>
+<P>
+Jump to:
+<A HREF="#cindex_a">a</A>
+-
+<A HREF="#cindex_b">b</A>
+-
+<A HREF="#cindex_c">c</A>
+-
+<A HREF="#cindex_f">f</A>
+-
+<A HREF="#cindex_g">g</A>
+-
+<A HREF="#cindex_i">i</A>
+-
+<A HREF="#cindex_l">l</A>
+-
+<A HREF="#cindex_m">m</A>
+-
+<A HREF="#cindex_o">o</A>
+-
+<A HREF="#cindex_r">r</A>
+-
+<A HREF="#cindex_u">u</A>
+<P>
+<H2><A NAME="cindex_a">a</A></H2>
+<DIR>
+<LI><A HREF="gmp.html#IDX40">Arithmetic functions</A>, <A HREF="gmp.html#IDX166">Arithmetic functions</A>
+</DIR>
+<H2><A NAME="cindex_b">b</A></H2>
+<DIR>
+<LI><A HREF="gmp.html#IDX95">Bit manipulation functions</A>
+<LI><A HREF="gmp.html#IDX234">BSD MP compatible functions</A>
+</DIR>
+<H2><A NAME="cindex_c">c</A></H2>
+<DIR>
+<LI><A HREF="gmp.html#IDX185">Comparison functions</A>
+<LI><A HREF="gmp.html#IDX2">Conditions for copying GNU MP</A>
+<LI><A HREF="gmp.html#IDX35">Conversion functions</A>, <A HREF="gmp.html#IDX163">Conversion functions</A>
+<LI><A HREF="gmp.html#IDX1">Copying conditions</A>
+</DIR>
+<H2><A NAME="cindex_f">f</A></H2>
+<DIR>
+<LI><A HREF="gmp.html#IDX165">Float arithmetic functions</A>
+<LI><A HREF="gmp.html#IDX151">Float assignment functions</A>
+<LI><A HREF="gmp.html#IDX184">Float comparisons functions</A>
+<LI><A HREF="gmp.html#IDX142">Float functions</A>
+<LI><A HREF="gmp.html#IDX192">Float input and output functions</A>
+<LI><A HREF="gmp.html#IDX141">Floating-point functions</A>
+<LI><A HREF="gmp.html#IDX9">Floating-point number</A>
+</DIR>
+<H2><A NAME="cindex_g">g</A></H2>
+<DIR>
+<LI><A HREF="gmp.html#IDX4"><TT>`gmp.h'</TT></A>
+</DIR>
+<H2><A NAME="cindex_i">i</A></H2>
+<DIR>
+<LI><A HREF="gmp.html#IDX108">I/O functions</A>, <A HREF="gmp.html#IDX195">I/O functions</A>
+<LI><A HREF="gmp.html#IDX28">Initialization and assignment functions</A>, <A HREF="gmp.html#IDX157">Initialization and assignment functions</A>
+<LI><A HREF="gmp.html#IDX106">Input functions</A>, <A HREF="gmp.html#IDX193">Input functions</A>
+<LI><A HREF="gmp.html#IDX3">Installation</A>
+<LI><A HREF="gmp.html#IDX5">Integer</A>
+<LI><A HREF="gmp.html#IDX39">Integer arithmetic functions</A>
+<LI><A HREF="gmp.html#IDX22">Integer assignment functions</A>
+<LI><A HREF="gmp.html#IDX34">Integer conversion functions</A>
+<LI><A HREF="gmp.html#IDX17">Integer functions</A>
+<LI><A HREF="gmp.html#IDX105">Integer input and output functions</A>
+</DIR>
+<H2><A NAME="cindex_l">l</A></H2>
+<DIR>
+<LI><A HREF="gmp.html#IDX11">Limb</A>
+<LI><A HREF="gmp.html#IDX94">Logical functions</A>
+<LI><A HREF="gmp.html#IDX200">Low-level functions</A>
+</DIR>
+<H2><A NAME="cindex_m">m</A></H2>
+<DIR>
+<LI><A HREF="gmp.html#IDX198">Miscellaneous float functions</A>
+<LI><A HREF="gmp.html#IDX113">Miscellaneous integer functions</A>
+<LI><A HREF="gmp.html#IDX235"><TT>`mp.h'</TT></A>
+</DIR>
+<H2><A NAME="cindex_o">o</A></H2>
+<DIR>
+<LI><A HREF="gmp.html#IDX107">Output functions</A>, <A HREF="gmp.html#IDX194">Output functions</A>
+</DIR>
+<H2><A NAME="cindex_r">r</A></H2>
+<DIR>
+<LI><A HREF="gmp.html#IDX7">Rational number</A>
+<LI><A HREF="gmp.html#IDX118">Rational number functions</A>
+<LI><A HREF="gmp.html#IDX16">Reporting bugs</A>
+</DIR>
+<H2><A NAME="cindex_u">u</A></H2>
+<DIR>
+<LI><A HREF="gmp.html#IDX143">User-defined precision</A>
+</DIR>
+
+</P>
+
+
+<H1><A NAME="SEC45" HREF="gmp.html#TOC45">Function and Type Index</A></H1>
+<P>
+Jump to:
+<A HREF="#findex__">_</A>
+-
+<A HREF="#findex_a">a</A>
+-
+<A HREF="#findex_d">d</A>
+-
+<A HREF="#findex_g">g</A>
+-
+<A HREF="#findex_i">i</A>
+-
+<A HREF="#findex_m">m</A>
+-
+<A HREF="#findex_p">p</A>
+-
+<A HREF="#findex_r">r</A>
+-
+<A HREF="#findex_s">s</A>
+-
+<A HREF="#findex_x">x</A>
+<P>
+<H2><A NAME="findex__">_</A></H2>
+<DIR>
+<LI><A HREF="gmp.html#IDX14">__GNU_MP_VERSION</A>
+<LI><A HREF="gmp.html#IDX15">__GNU_MP_VERSION_MINOR</A>
+<LI><A HREF="gmp.html#IDX20">_mpz_realloc</A>
+</DIR>
+<H2><A NAME="findex_a">a</A></H2>
+<DIR>
+<LI><A HREF="gmp.html#IDX254">allocate_function</A>
+</DIR>
+<H2><A NAME="findex_d">d</A></H2>
+<DIR>
+<LI><A HREF="gmp.html#IDX256">deallocate_function</A>
+</DIR>
+<H2><A NAME="findex_g">g</A></H2>
+<DIR>
+<LI><A HREF="gmp.html#IDX247">gcd</A>
+</DIR>
+<H2><A NAME="findex_i">i</A></H2>
+<DIR>
+<LI><A HREF="gmp.html#IDX236">itom</A>
+</DIR>
+<H2><A NAME="findex_m">m</A></H2>
+<DIR>
+<LI><A HREF="gmp.html#IDX239">madd</A>
+<LI><A HREF="gmp.html#IDX248">mcmp</A>
+<LI><A HREF="gmp.html#IDX242">mdiv</A>
+<LI><A HREF="gmp.html#IDX252">mfree</A>
+<LI><A HREF="gmp.html#IDX249">min</A>
+<LI><A HREF="gmp.html#IDX250">mout</A>
+<LI><A HREF="gmp.html#IDX238">move</A>
+<LI><A HREF="gmp.html#IDX12"><CODE>mp_limb_t</CODE></A>
+<LI><A HREF="gmp.html#IDX253">mp_set_memory_functions</A>
+<LI><A HREF="gmp.html#IDX181">mpf_abs</A>
+<LI><A HREF="gmp.html#IDX167">mpf_add</A>
+<LI><A HREF="gmp.html#IDX168">mpf_add_ui</A>
+<LI><A HREF="gmp.html#IDX147">mpf_clear</A>
+<LI><A HREF="gmp.html#IDX186">mpf_cmp</A>
+<LI><A HREF="gmp.html#IDX188">mpf_cmp_si</A>
+<LI><A HREF="gmp.html#IDX187">mpf_cmp_ui</A>
+<LI><A HREF="gmp.html#IDX174">mpf_div</A>
+<LI><A HREF="gmp.html#IDX183">mpf_div_2exp</A>
+<LI><A HREF="gmp.html#IDX176">mpf_div_ui</A>
+<LI><A HREF="gmp.html#IDX189">mpf_eq</A>
+<LI><A HREF="gmp.html#IDX149">mpf_get_prec</A>
+<LI><A HREF="gmp.html#IDX164">mpf_get_str</A>
+<LI><A HREF="gmp.html#IDX145">mpf_init</A>
+<LI><A HREF="gmp.html#IDX146">mpf_init2</A>
+<LI><A HREF="gmp.html#IDX158">mpf_init_set</A>
+<LI><A HREF="gmp.html#IDX161">mpf_init_set_d</A>
+<LI><A HREF="gmp.html#IDX160">mpf_init_set_si</A>
+<LI><A HREF="gmp.html#IDX162">mpf_init_set_str</A>
+<LI><A HREF="gmp.html#IDX159">mpf_init_set_ui</A>
+<LI><A HREF="gmp.html#IDX197">mpf_inp_str</A>
+<LI><A HREF="gmp.html#IDX172">mpf_mul</A>
+<LI><A HREF="gmp.html#IDX182">mpf_mul_2exp</A>
+<LI><A HREF="gmp.html#IDX173">mpf_mul_ui</A>
+<LI><A HREF="gmp.html#IDX180">mpf_neg</A>
+<LI><A HREF="gmp.html#IDX196">mpf_out_str</A>
+<LI><A HREF="gmp.html#IDX179">mpf_pow_ui</A>
+<LI><A HREF="gmp.html#IDX199">mpf_random2</A>
+<LI><A HREF="gmp.html#IDX190">mpf_reldiff</A>
+<LI><A HREF="gmp.html#IDX152">mpf_set</A>
+<LI><A HREF="gmp.html#IDX155">mpf_set_d</A>
+<LI><A HREF="gmp.html#IDX144">mpf_set_default_prec</A>
+<LI><A HREF="gmp.html#IDX148">mpf_set_prec</A>
+<LI><A HREF="gmp.html#IDX150">mpf_set_prec_raw</A>
+<LI><A HREF="gmp.html#IDX154">mpf_set_si</A>
+<LI><A HREF="gmp.html#IDX156">mpf_set_str</A>
+<LI><A HREF="gmp.html#IDX153">mpf_set_ui</A>
+<LI><A HREF="gmp.html#IDX191">mpf_sgn</A>
+<LI><A HREF="gmp.html#IDX177">mpf_sqrt</A>
+<LI><A HREF="gmp.html#IDX178">mpf_sqrt_ui</A>
+<LI><A HREF="gmp.html#IDX169">mpf_sub</A>
+<LI><A HREF="gmp.html#IDX171">mpf_sub_ui</A>
+<LI><A HREF="gmp.html#IDX10"><CODE>mpf_t</CODE></A>
+<LI><A HREF="gmp.html#IDX175">mpf_ui_div</A>
+<LI><A HREF="gmp.html#IDX170">mpf_ui_sub</A>
+<LI><A HREF="gmp.html#IDX203">mpn_add</A>
+<LI><A HREF="gmp.html#IDX202">mpn_add_1</A>
+<LI><A HREF="gmp.html#IDX201">mpn_add_n</A>
+<LI><A HREF="gmp.html#IDX209">mpn_addmul_1</A>
+<LI><A HREF="gmp.html#IDX218">mpn_bdivmod</A>
+<LI><A HREF="gmp.html#IDX221">mpn_cmp</A>
+<LI><A HREF="gmp.html#IDX214">mpn_divmod</A>
+<LI><A HREF="gmp.html#IDX215">mpn_divmod_1</A>
+<LI><A HREF="gmp.html#IDX212">mpn_divrem</A>
+<LI><A HREF="gmp.html#IDX213">mpn_divrem_1</A>
+<LI><A HREF="gmp.html#IDX222">mpn_gcd</A>
+<LI><A HREF="gmp.html#IDX223">mpn_gcd_1</A>
+<LI><A HREF="gmp.html#IDX224">mpn_gcdext</A>
+<LI><A HREF="gmp.html#IDX226">mpn_get_str</A>
+<LI><A HREF="gmp.html#IDX232">mpn_hamdist</A>
+<LI><A HREF="gmp.html#IDX219">mpn_lshift</A>
+<LI><A HREF="gmp.html#IDX216">mpn_mod_1</A>
+<LI><A HREF="gmp.html#IDX211">mpn_mul</A>
+<LI><A HREF="gmp.html#IDX208">mpn_mul_1</A>
+<LI><A HREF="gmp.html#IDX207">mpn_mul_n</A>
+<LI><A HREF="gmp.html#IDX233">mpn_perfect_square_p</A>
+<LI><A HREF="gmp.html#IDX231">mpn_popcount</A>
+<LI><A HREF="gmp.html#IDX217">mpn_pre_mod_1</A>
+<LI><A HREF="gmp.html#IDX230">mpn_random2</A>
+<LI><A HREF="gmp.html#IDX220">mpn_rshift</A>
+<LI><A HREF="gmp.html#IDX228">mpn_scan0</A>
+<LI><A HREF="gmp.html#IDX229">mpn_scan1</A>
+<LI><A HREF="gmp.html#IDX227">mpn_set_str</A>
+<LI><A HREF="gmp.html#IDX225">mpn_sqrtrem</A>
+<LI><A HREF="gmp.html#IDX206">mpn_sub</A>
+<LI><A HREF="gmp.html#IDX205">mpn_sub_1</A>
+<LI><A HREF="gmp.html#IDX204">mpn_sub_n</A>
+<LI><A HREF="gmp.html#IDX210">mpn_submul_1</A>
+<LI><A HREF="gmp.html#IDX125">mpq_add</A>
+<LI><A HREF="gmp.html#IDX119">mpq_canonicalize</A>
+<LI><A HREF="gmp.html#IDX121">mpq_clear</A>
+<LI><A HREF="gmp.html#IDX131">mpq_cmp</A>
+<LI><A HREF="gmp.html#IDX132">mpq_cmp_ui</A>
+<LI><A HREF="gmp.html#IDX136">mpq_denref</A>
+<LI><A HREF="gmp.html#IDX128">mpq_div</A>
+<LI><A HREF="gmp.html#IDX134">mpq_equal</A>
+<LI><A HREF="gmp.html#IDX140">mpq_get_den</A>
+<LI><A HREF="gmp.html#IDX139">mpq_get_num</A>
+<LI><A HREF="gmp.html#IDX120">mpq_init</A>
+<LI><A HREF="gmp.html#IDX130">mpq_inv</A>
+<LI><A HREF="gmp.html#IDX127">mpq_mul</A>
+<LI><A HREF="gmp.html#IDX129">mpq_neg</A>
+<LI><A HREF="gmp.html#IDX135">mpq_numref</A>
+<LI><A HREF="gmp.html#IDX122">mpq_set</A>
+<LI><A HREF="gmp.html#IDX138">mpq_set_den</A>
+<LI><A HREF="gmp.html#IDX137">mpq_set_num</A>
+<LI><A HREF="gmp.html#IDX124">mpq_set_si</A>
+<LI><A HREF="gmp.html#IDX123">mpq_set_ui</A>
+<LI><A HREF="gmp.html#IDX133">mpq_sgn</A>
+<LI><A HREF="gmp.html#IDX126">mpq_sub</A>
+<LI><A HREF="gmp.html#IDX8"><CODE>mpq_t</CODE></A>
+<LI><A HREF="gmp.html#IDX84">mpz_abs</A>
+<LI><A HREF="gmp.html#IDX41">mpz_add</A>
+<LI><A HREF="gmp.html#IDX42">mpz_add_ui</A>
+<LI><A HREF="gmp.html#IDX96">mpz_and</A>
+<LI><A HREF="gmp.html#IDX21">mpz_array_init</A>
+<LI><A HREF="gmp.html#IDX60">mpz_cdiv_q</A>
+<LI><A HREF="gmp.html#IDX61">mpz_cdiv_q_ui</A>
+<LI><A HREF="gmp.html#IDX64">mpz_cdiv_qr</A>
+<LI><A HREF="gmp.html#IDX65">mpz_cdiv_qr_ui</A>
+<LI><A HREF="gmp.html#IDX62">mpz_cdiv_r</A>
+<LI><A HREF="gmp.html#IDX63">mpz_cdiv_r_ui</A>
+<LI><A HREF="gmp.html#IDX66">mpz_cdiv_ui</A>
+<LI><A HREF="gmp.html#IDX19">mpz_clear</A>
+<LI><A HREF="gmp.html#IDX104">mpz_clrbit</A>
+<LI><A HREF="gmp.html#IDX90">mpz_cmp</A>
+<LI><A HREF="gmp.html#IDX92">mpz_cmp_si</A>
+<LI><A HREF="gmp.html#IDX91">mpz_cmp_ui</A>
+<LI><A HREF="gmp.html#IDX98">mpz_com</A>
+<LI><A HREF="gmp.html#IDX69">mpz_divexact</A>
+<LI><A HREF="gmp.html#IDX78">mpz_fac_ui</A>
+<LI><A HREF="gmp.html#IDX53">mpz_fdiv_q</A>
+<LI><A HREF="gmp.html#IDX87">mpz_fdiv_q_2exp</A>
+<LI><A HREF="gmp.html#IDX54">mpz_fdiv_q_ui</A>
+<LI><A HREF="gmp.html#IDX57">mpz_fdiv_qr</A>
+<LI><A HREF="gmp.html#IDX58">mpz_fdiv_qr_ui</A>
+<LI><A HREF="gmp.html#IDX55">mpz_fdiv_r</A>
+<LI><A HREF="gmp.html#IDX89">mpz_fdiv_r_2exp</A>
+<LI><A HREF="gmp.html#IDX56">mpz_fdiv_r_ui</A>
+<LI><A HREF="gmp.html#IDX59">mpz_fdiv_ui</A>
+<LI><A HREF="gmp.html#IDX79">mpz_gcd</A>
+<LI><A HREF="gmp.html#IDX80">mpz_gcd_ui</A>
+<LI><A HREF="gmp.html#IDX81">mpz_gcdext</A>
+<LI><A HREF="gmp.html#IDX37">mpz_get_si</A>
+<LI><A HREF="gmp.html#IDX38">mpz_get_str</A>
+<LI><A HREF="gmp.html#IDX36">mpz_get_ui</A>
+<LI><A HREF="gmp.html#IDX100">mpz_hamdist</A>
+<LI><A HREF="gmp.html#IDX18">mpz_init</A>
+<LI><A HREF="gmp.html#IDX29">mpz_init_set</A>
+<LI><A HREF="gmp.html#IDX32">mpz_init_set_d</A>
+<LI><A HREF="gmp.html#IDX31">mpz_init_set_si</A>
+<LI><A HREF="gmp.html#IDX33">mpz_init_set_str</A>
+<LI><A HREF="gmp.html#IDX30">mpz_init_set_ui</A>
+<LI><A HREF="gmp.html#IDX112">mpz_inp_raw</A>
+<LI><A HREF="gmp.html#IDX110">mpz_inp_str</A>
+<LI><A HREF="gmp.html#IDX82">mpz_invert</A>
+<LI><A HREF="gmp.html#IDX97">mpz_ior</A>
+<LI><A HREF="gmp.html#IDX67">mpz_mod</A>
+<LI><A HREF="gmp.html#IDX68">mpz_mod_ui</A>
+<LI><A HREF="gmp.html#IDX45">mpz_mul</A>
+<LI><A HREF="gmp.html#IDX85">mpz_mul_2exp</A>
+<LI><A HREF="gmp.html#IDX46">mpz_mul_ui</A>
+<LI><A HREF="gmp.html#IDX83">mpz_neg</A>
+<LI><A HREF="gmp.html#IDX111">mpz_out_raw</A>
+<LI><A HREF="gmp.html#IDX109">mpz_out_str</A>
+<LI><A HREF="gmp.html#IDX72">mpz_perfect_square_p</A>
+<LI><A HREF="gmp.html#IDX99">mpz_popcount</A>
+<LI><A HREF="gmp.html#IDX76">mpz_pow_ui</A>
+<LI><A HREF="gmp.html#IDX74">mpz_powm</A>
+<LI><A HREF="gmp.html#IDX75">mpz_powm_ui</A>
+<LI><A HREF="gmp.html#IDX73">mpz_probab_prime_p</A>
+<LI><A HREF="gmp.html#IDX114">mpz_random</A>
+<LI><A HREF="gmp.html#IDX115">mpz_random2</A>
+<LI><A HREF="gmp.html#IDX101">mpz_scan0</A>
+<LI><A HREF="gmp.html#IDX102">mpz_scan1</A>
+<LI><A HREF="gmp.html#IDX23">mpz_set</A>
+<LI><A HREF="gmp.html#IDX26">mpz_set_d</A>
+<LI><A HREF="gmp.html#IDX25">mpz_set_si</A>
+<LI><A HREF="gmp.html#IDX27">mpz_set_str</A>
+<LI><A HREF="gmp.html#IDX24">mpz_set_ui</A>
+<LI><A HREF="gmp.html#IDX103">mpz_setbit</A>
+<LI><A HREF="gmp.html#IDX93">mpz_sgn</A>
+<LI><A HREF="gmp.html#IDX116">mpz_size</A>
+<LI><A HREF="gmp.html#IDX117">mpz_sizeinbase</A>
+<LI><A HREF="gmp.html#IDX70">mpz_sqrt</A>
+<LI><A HREF="gmp.html#IDX71">mpz_sqrtrem</A>
+<LI><A HREF="gmp.html#IDX43">mpz_sub</A>
+<LI><A HREF="gmp.html#IDX44">mpz_sub_ui</A>
+<LI><A HREF="gmp.html#IDX6"><CODE>mpz_t</CODE></A>
+<LI><A HREF="gmp.html#IDX47">mpz_tdiv_q</A>
+<LI><A HREF="gmp.html#IDX86">mpz_tdiv_q_2exp</A>
+<LI><A HREF="gmp.html#IDX48">mpz_tdiv_q_ui</A>
+<LI><A HREF="gmp.html#IDX51">mpz_tdiv_qr</A>
+<LI><A HREF="gmp.html#IDX52">mpz_tdiv_qr_ui</A>
+<LI><A HREF="gmp.html#IDX49">mpz_tdiv_r</A>
+<LI><A HREF="gmp.html#IDX88">mpz_tdiv_r_2exp</A>
+<LI><A HREF="gmp.html#IDX50">mpz_tdiv_r_ui</A>
+<LI><A HREF="gmp.html#IDX77">mpz_ui_pow_ui</A>
+<LI><A HREF="gmp.html#IDX244">msqrt</A>
+<LI><A HREF="gmp.html#IDX240">msub</A>
+<LI><A HREF="gmp.html#IDX251">mtox</A>
+<LI><A HREF="gmp.html#IDX241">mult</A>
+</DIR>
+<H2><A NAME="findex_p">p</A></H2>
+<DIR>
+<LI><A HREF="gmp.html#IDX245">pow</A>
+</DIR>
+<H2><A NAME="findex_r">r</A></H2>
+<DIR>
+<LI><A HREF="gmp.html#IDX255">reallocate_function</A>
+<LI><A HREF="gmp.html#IDX246">rpow</A>
+</DIR>
+<H2><A NAME="findex_s">s</A></H2>
+<DIR>
+<LI><A HREF="gmp.html#IDX243">sdiv</A>
+</DIR>
+<H2><A NAME="findex_x">x</A></H2>
+<DIR>
+<LI><A HREF="gmp.html#IDX237">xtom</A>
+</DIR>
+
+</P>
+
+<P><HR><P>
+This document was generated on 7 November 1998 using the
+<A HREF="http://wwwinfo.cern.ch/dis/texi2html/">texi2html</A>
+translator version 1.52.</P>
+</BODY>
+</HTML>
